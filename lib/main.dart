@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:foundation_2/app/main_shared.dart';
 import 'package:foundation_2/presentation.dart';
 
-void main() {
-  runApp(const DimindApp());
-}
+void main() => mainShared(const DimindApp());

@@ -13,7 +13,9 @@ class _DimindAppState extends State<DimindApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'DiMind',
       theme: DimindTheme.light(),
+      darkTheme: DimindTheme.dark(),
       home: const HomeScreen(),
     );
   }

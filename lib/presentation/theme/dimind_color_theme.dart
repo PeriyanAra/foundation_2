@@ -61,11 +61,14 @@ class DimindColorTheme extends ThemeExtension<DimindColorTheme> {
           backgroundTertiary == other.backgroundTertiary;
 
   @override
-  ThemeExtension<DimindColorTheme> copyWith() {
+  DimindColorTheme copyWith({
+    DimindColor? primary,
+    DimindColor? secondary,
+  }) {
     return DimindColorTheme(
       brightness: brightness,
-      primary: primary,
-      secondary: secondary,
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
       tertiary: tertiary,
       foregroundPrimary: foregroundPrimary,
       foregroundSecondary: foregroundSecondary,
