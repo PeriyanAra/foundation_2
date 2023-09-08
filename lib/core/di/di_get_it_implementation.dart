@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:foundation_2/di/di.dart';
+import 'package:foundation_2/core/di/di.dart';
 import 'package:get_it/get_it.dart' hide FactoryFunc, FactoryFuncParam, DisposingFunc;
 
 class DiGetItImplementation implements DI {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/theme/theme.dart';
+import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,8 +13,23 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: DimindColorTheme.of(context).backgroundPrimary,
-      body: Container(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () {
+              context.read<AppThemeMode>().updateThemeMode(ThemeMode.light);
+            },
+            child: const Text('Light'),
+          ),
+          TextButton(
+            onPressed: () {
+              context.read<AppThemeMode>().updateThemeMode(ThemeMode.dark);
+            },
+            child: const Text('Dark'),
+          ),
+        ],
+      ),
     );
   }
 }
