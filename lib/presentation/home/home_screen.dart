@@ -28,6 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: const Text('Dark'),
           ),
+          TextButton(
+            onPressed: () {},
+            child: const Text('Go to settings'),
+          ),
         ],
       ),
     );

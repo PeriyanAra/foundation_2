@@ -8,7 +8,7 @@ class DiGetItImplementation implements DI {
   @visibleForTesting
   final GetIt getIt;
 
-  final Map<Type, InstanceProvider<Object>> _overrides = {};
+  // final Map<Type, InstanceProvider<Object>> _overrides = {};
 
   @override
   T get<T extends Object>({String? instanceName}) => getIt.get(instanceName: instanceName);
@@ -74,7 +74,7 @@ class DiGetItImplementation implements DI {
   }
 
   Future<void> reset() {
-    _overrides.clear();
+    // _overrides.clear();
 
     return getIt.reset();
   }
