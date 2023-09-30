@@ -9,5 +9,5 @@
         "**/.fvm": true
     },
     "dart.runPubGetOnPubspecChanges": "never",
-    "dart.lineLength": 100,
+    "dart.lineLength": 140,
 }
