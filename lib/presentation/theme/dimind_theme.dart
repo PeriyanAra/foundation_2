@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foundation_2/presentation/theme/dimind_color.dart';
 import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
 import 'package:foundation_2/presentation/theme/dimind_colors_palette.dart';
+import 'package:foundation_2/presentation/theme/extensions/app_profile_theme.dart';
 import 'package:foundation_2/presentation/theme/extensions/dimind_input_field_theme.dart';
 import 'package:foundation_2/presentation/theme/extensions/dimind_rounded_button_theme.dart';
 import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
@@ -10,6 +11,7 @@ import 'package:foundation_2/presentation/theme/extensions/signup_screen_theme.d
 class DimindTheme {
   static ThemeData light() {
     final colorTheme = _lightColorTheme();
+    final profileTheme = AppProfileTheme(colorTheme: colorTheme);
     final inputFieldTheme = DimindInputFieldTheme(colorTheme: colorTheme);
     final roundedButtonTheme = DimindRoundedButtonTheme(colorTheme: colorTheme);
     final loginScreenTheme = DimindLoginScreenTheme(colorTheme: colorTheme);
@@ -26,6 +28,7 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        profileTheme,
         inputFieldTheme,
         roundedButtonTheme,
         loginScreenTheme,
@@ -36,6 +39,7 @@ class DimindTheme {
 
   static ThemeData dark() {
     final colorTheme = _darkColorTheme();
+    final profileTheme = AppProfileTheme(colorTheme: colorTheme);
     final inputFieldTheme = DimindInputFieldTheme(colorTheme: colorTheme);
     final roundedButtonTheme = DimindRoundedButtonTheme(colorTheme: colorTheme);
     final loginScreenTheme = DimindLoginScreenTheme(colorTheme: colorTheme);
@@ -52,6 +56,7 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        profileTheme,
         inputFieldTheme,
         roundedButtonTheme,
         loginScreenTheme,
