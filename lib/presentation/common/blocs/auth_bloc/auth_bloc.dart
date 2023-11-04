@@ -13,6 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginAuthEvent>(_handleLoginAuthEvent);
     on<LogoutAuthEvent>(_handleLogoutAuthEvent);
     on<SignInWithGoogleAuthEvent>(_handleSignInWithGoogleAuthEvent);
+    on<SignUpAuthEvent>(_handleSignUpAuthEvent);
   }
   final AuthUseCase _authUseCase;
 
@@ -21,11 +22,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     try {
-      await _authUseCase.login(
-        entity: const AuthRequestEntity(
-          password: 'password',
-          email: 'email',
+      final response = await _authUseCase.login(
+        entity: AuthRequestEntity(
+          email: event.emailValue,
+          password: event.passwordValue,
         ),
+      );
+
+      response.when(
+        success: (data) => {emit(const AuthState.authenticated())},
+        failure: (error) => {
+          emit(AuthState.error(errorMessage: error.debugMessage)),
+        },
       );
 
       emit(const AuthState.authenticated());
@@ -53,6 +61,35 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       await _authUseCase.loginWithGoogle();
       emit(const AuthState.authenticated());
+    } catch (e) {
+      emit(AuthState.error(errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> _handleSignUpAuthEvent(
+    SignUpAuthEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      if (event.passwordValue != event.repeatedPasswordValue) {
+        emit(const AuthState.error(errorMessage: 'Password error'));
+      } else {
+        final response = await _authUseCase.signUp(
+          entity: AuthRequestEntity(
+            email: event.emailValue,
+            password: event.passwordValue,
+          ),
+        );
+
+        response.when(
+          success: (data) => {emit(const AuthState.authenticated())},
+          failure: (error) => {
+            emit(AuthState.error(errorMessage: error.debugMessage)),
+          },
+        );
+
+        emit(const AuthState.authenticated());
+      }
     } catch (e) {
       emit(AuthState.error(errorMessage: e.toString()));
     }
