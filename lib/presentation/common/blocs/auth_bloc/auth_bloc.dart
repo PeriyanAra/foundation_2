@@ -7,9 +7,8 @@ part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({
-    required AuthUseCase authUseCase,
-  })  : _authUseCase = authUseCase,
+  AuthBloc({required AuthUseCase authUseCase})
+      : _authUseCase = authUseCase,
         super(const AuthInitialState()) {
     on<LoginAuthEvent>(_handleLoginAuthEvent);
     on<LogoutAuthEvent>(_handleLogoutAuthEvent);
