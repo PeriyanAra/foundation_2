@@ -16,13 +16,13 @@ class DimindApp extends StatefulWidget {
 class _DimindAppState extends State<DimindApp> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'DiMind',
-        theme: DimindTheme.light(),
-        darkTheme: DimindTheme.dark(),
-        themeMode: context.watch<AppThemeMode>().themeMode,
-        home: const LoginScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'DiMind',
+      theme: DimindTheme.light(),
+      darkTheme: DimindTheme.dark(),
+      themeMode: context.watch<AppThemeMode>().themeMode,
+      home: const LoginScreen(),
     );
   }
 }
