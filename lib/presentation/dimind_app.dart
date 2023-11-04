@@ -4,6 +4,7 @@ import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
 import 'package:foundation_2/presentation/common/blocs/auth_bloc/auth_bloc.dart';
 import 'package:foundation_2/presentation/home/home_screen.dart';
 import 'package:foundation_2/presentation/theme/dimind_theme.dart';
+import 'package:provider/provider.dart';
 
 class DimindApp extends StatefulWidget {
   const DimindApp({super.key});
@@ -18,12 +19,12 @@ class _DimindAppState extends State<DimindApp> {
     return BlocProvider(
       create: (context) => AuthBloc(),
       child: MaterialApp(
-        title: 'DiMind',
-        theme: DimindTheme.light(),
-        darkTheme: DimindTheme.dark(),
-        themeMode: context.watch<AppThemeMode>().themeMode,
-        home: const HomeScreen(),
-      ),
+          title: 'DiMind',
+          theme: DimindTheme.light(),
+          darkTheme: DimindTheme.dark(),
+          themeMode: context.watch<AppThemeMode>().themeMode,
+          home: const HomeScreen(),
+        ),
     );
   }
 }
