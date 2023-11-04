@@ -19,7 +19,7 @@ class ProfileInfo extends StatelessWidget {
           child: SizedBox(
             height: profileTheme.avatarHeightAndWidth,
             width: profileTheme.avatarHeightAndWidth,
-            child: SvgPicture.asset('assets/images/people-23.svg'),
+            child: SvgPicture.asset('assets/images/people.svg'),
           ),
         ),
         // CircleAvatar(
