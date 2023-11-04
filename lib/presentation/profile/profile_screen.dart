@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/profile/profie_info.dart';
-import 'package:foundation_2/presentation/profile/profile_gradient.dart';
+import 'package:foundation_2/presentation/profile/widgets/profie_info.dart';
+import 'package:foundation_2/presentation/profile/widgets/profile_gradient.dart';
 import 'package:foundation_2/presentation/theme/extensions/app_profile_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,14 +12,17 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       body: Stack(
-            alignment: Alignment.center,
-            children: [
-              ProfileGradient(
-                profileTheme: profileTheme,
-              ), 
-              ProfileInfo(profileTheme: profileTheme, name: 'Tatul',),
-            ],
+        alignment: Alignment.center,
+        children: [
+          ProfileGradient(
+            profileTheme: profileTheme,
           ),
+          ProfileInfo(
+            profileTheme: profileTheme,
+            name: 'Tatul',
+          ),
+        ],
+      ),
     );
   }
 }
