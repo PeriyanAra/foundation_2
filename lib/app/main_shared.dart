@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:developer' as dev;
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
 import 'package:foundation_2/app/app_theme_mode/app_theme_mode_settings.dart';
 import 'package:foundation_2/app/restart_widget.dart';
 import 'package:foundation_2/core/di/di_get_it_implementation.dart';
 import 'package:foundation_2/core/di/register_app_dependencies.dart';
+import 'package:foundation_2/firebase_options.dart';
 import 'package:provider/provider.dart';
 
 Future<void> mainShared(
@@ -15,7 +17,9 @@ Future<void> mainShared(
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
       FlutterError.onError = (FlutterErrorDetails errorDetails) {
         Zone.current.handleUncaughtError(
           errorDetails.exception,
