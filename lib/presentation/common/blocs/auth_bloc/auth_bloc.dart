@@ -30,15 +30,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
 
       response.when(
-        success: (data) => {emit(const AuthState.authenticated())},
+        success: (data) => {emit(AuthState.authenticated(event.emailValue))},
         failure: (error) => {
           emit(AuthState.error(errorMessage: error.debugMessage)),
         },
       );
-
-      emit(const AuthState.authenticated());
     } catch (e) {
-      emit(AuthState.error(errorMessage: e.toString()));
+      emit(
+        AuthState.error(
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 
@@ -50,7 +52,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _authUseCase.logOut();
       emit(const AuthState.unAuthenticated());
     } catch (e) {
-      emit(AuthState.error(errorMessage: e.toString()));
+      emit(
+        AuthState.error(
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 
@@ -60,7 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     try {
       await _authUseCase.loginWithGoogle();
-      emit(const AuthState.authenticated());
+      emit(const AuthState.authenticated(null));
     } catch (e) {
       emit(AuthState.error(errorMessage: e.toString()));
     }
@@ -82,13 +88,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
 
         response.when(
-          success: (data) => {emit(const AuthState.authenticated())},
+          success: (data) => {
+            emit(
+              AuthState.authenticated(event.emailValue),
+            ),
+          },
           failure: (error) => {
-            emit(AuthState.error(errorMessage: error.debugMessage)),
+            emit(
+              AuthState.error(errorMessage: error.debugMessage),
+            ),
           },
         );
-
-        emit(const AuthState.authenticated());
       }
     } catch (e) {
       emit(AuthState.error(errorMessage: e.toString()));

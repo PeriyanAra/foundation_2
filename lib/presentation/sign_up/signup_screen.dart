@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foundation_2/presentation/common/export.dart';
+import 'package:foundation_2/presentation/profile/profile_screen.dart';
 import 'package:foundation_2/presentation/sign_up/widgets/signup_fields.dart';
 import 'package:foundation_2/presentation/theme/extensions/signup_screen_theme.dart';
 
@@ -37,42 +38,53 @@ class _SignupScreenState extends State<SignupScreen> {
       appBar: AppBar(
         backgroundColor: dimindSignupScreenTheme.colorTheme.backgroundPrimary,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Registration',
-            style: dimindSignupScreenTheme.registerTextStyle,
-          ),
-          const SizedBox(height: 80),
-          SignUpFields(
-            emailTextEditingController: emailTextEditingController,
-            nameTextEditingController: nameTextEditingController,
-            passwordEditingController: passwordEditingController,
-            repeatedPasswordTextEditingController: repeatedPasswordTextEditingController,
-          ),
-          const Spacer(),
-          BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {
-              return CustomRoundedButton(
-                text: 'Sign Up',
-                backgroundColor: dimindSignupScreenTheme.blueColor,
-                isExpanded: false,
-                onPressed: () {
-                  context.read<AuthBloc>().add(
-                        AuthEvent.signUp(
-                          emailValue: emailTextEditingController.text,
-                          passwordValue: passwordEditingController.text,
-                          nameValue: nameTextEditingController.text,
-                          repeatedPasswordValue: repeatedPasswordTextEditingController.text,
-                        ),
-                      );
-                },
-              );
-            },
-          ),
-          const Spacer()
-        ],
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthAuthenticatedState) {
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => ProfileScreen(
+                userName: state.userName,
+              ),
+            );
+          }
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Registration',
+              style: dimindSignupScreenTheme.registerTextStyle,
+            ),
+            const SizedBox(height: 80),
+            SignUpFields(
+              emailTextEditingController: emailTextEditingController,
+              nameTextEditingController: nameTextEditingController,
+              passwordEditingController: passwordEditingController,
+              repeatedPasswordTextEditingController: repeatedPasswordTextEditingController,
+            ),
+            const Spacer(),
+            BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                return CustomRoundedButton(
+                  text: 'Sign Up',
+                  backgroundColor: dimindSignupScreenTheme.blueColor,
+                  isExpanded: false,
+                  onPressed: () {
+                    context.read<AuthBloc>().add(
+                          AuthEvent.signUp(
+                            emailValue: emailTextEditingController.text,
+                            passwordValue: passwordEditingController.text,
+                            nameValue: nameTextEditingController.text,
+                            repeatedPasswordValue: repeatedPasswordTextEditingController.text,
+                          ),
+                        );
+                  },
+                );
+              },
+            ),
+            const Spacer()
+          ],
+        ),
       ),
     );
   }

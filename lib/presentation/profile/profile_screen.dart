@@ -9,7 +9,7 @@ class ProfileScreen extends StatelessWidget {
     required this.userName,
   });
   
-  final String userName;
+  final String? userName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           ProfileInfo(
             profileTheme: profileTheme,
-            name: userName,
+            name: userName ?? '',
           ),
         ],
       ),

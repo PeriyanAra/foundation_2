@@ -16,7 +16,7 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is AuthAuthenticatedState) {
+        if (state is AuthUnAuthenticatedState) {
           MaterialPageRoute<void>(
             builder: (BuildContext context) => const SignupScreen(),
           );
