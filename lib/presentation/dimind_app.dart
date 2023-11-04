@@ -16,6 +16,7 @@ class _DimindAppState extends State<DimindApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DiMind',
+      debugShowCheckedModeBanner: false,
       theme: DimindTheme.light(),
       darkTheme: DimindTheme.dark(),
       themeMode: context.watch<AppThemeMode>().themeMode,
