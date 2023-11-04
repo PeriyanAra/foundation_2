@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:foundation_2/presentation/theme/dimind_color.dart';
 import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
 import 'package:foundation_2/presentation/theme/dimind_colors_palette.dart';
+import 'package:foundation_2/presentation/theme/extensions/dimind_input_field_theme.dart';
+import 'package:foundation_2/presentation/theme/extensions/dimind_rounded_button_theme.dart';
+import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
+import 'package:foundation_2/presentation/theme/extensions/signup_screen_theme.dart';
 
 class DimindTheme {
   static ThemeData light() {
     final colorTheme = _lightColorTheme();
+    final inputFieldTheme = DimindInputFieldTheme(colorTheme: colorTheme);
+    final roundedButtonTheme = DimindRoundedButtonTheme(colorTheme: colorTheme);
+    final loginScreenTheme = DimindLoginScreenTheme(colorTheme: colorTheme);
+    final signupScreenTheme = DimindSignupScreenTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -18,12 +26,20 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        inputFieldTheme,
+        roundedButtonTheme,
+        loginScreenTheme,
+        signupScreenTheme,
       ],
     );
   }
 
   static ThemeData dark() {
     final colorTheme = _darkColorTheme();
+    final inputFieldTheme = DimindInputFieldTheme(colorTheme: colorTheme);
+    final roundedButtonTheme = DimindRoundedButtonTheme(colorTheme: colorTheme);
+    final loginScreenTheme = DimindLoginScreenTheme(colorTheme: colorTheme);
+    final signupScreenTheme = DimindSignupScreenTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -36,6 +52,10 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        inputFieldTheme,
+        roundedButtonTheme,
+        loginScreenTheme,
+        signupScreenTheme,
       ],
     );
   }
