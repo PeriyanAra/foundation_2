@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:foundation_2/domain/domain.dart';
-import 'package:foundation_2/presentation/common/extensions/validation_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
