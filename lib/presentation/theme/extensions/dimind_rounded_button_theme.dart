@@ -13,7 +13,7 @@ class DimindRoundedButtonTheme extends ThemeExtension<DimindRoundedButtonTheme> 
   double get horizontalPadding => 24.0;
   double get verticalPadding => 10.0;
 
-  TextStyle get textStyle1 => TextStyle(
+  TextStyle get textStyle1 => const TextStyle(
         fontFamily: 'OpenSans',
         fontWeight: FontWeight.w500,
         fontSize: 14,

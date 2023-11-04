@@ -30,10 +30,15 @@ class SignupScreen extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          const CustomRoundedButton(
+          CustomRoundedButton(
             text: 'Sign Up',
+            backgroundColor: dimindSignupScreenTheme.blueColor,
             isExpanded: false,
-          )
+            onPressed: () {},
+          ),
+          const SizedBox(
+            height: 130,
+          ),
         ],
       ),
     );

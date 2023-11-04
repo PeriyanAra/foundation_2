@@ -9,6 +9,7 @@ class DimindSignupScreenTheme extends ThemeExtension<DimindSignupScreenTheme> {
   final DimindColorTheme colorTheme;
 
   double get horizontalPadding => 24.0;
+  Color get blueColor => DimindColorsPalette.blue50;
 
   TextStyle get registerTextStyle => TextStyle(
         fontWeight: FontWeight.w500,

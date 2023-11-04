@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class DimindColorsPalette {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
@@ -15,6 +17,7 @@ class DimindColorsPalette {
   static const Color yellow60 = Color(0xFFFCC624);
 
   static const Color blue60 = Color(0xFF00539F);
+  static const Color blue50 = Color(0xFF2196F3);
   static const Color blue10 = Color.fromARGB(255, 214, 235, 255);
 
   static const Color skin60 = Color(0xFFD69A8C);
