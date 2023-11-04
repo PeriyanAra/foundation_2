@@ -32,6 +32,7 @@ class ProfileInfo extends StatelessWidget {
           isExpanded: false,
           backgroundColor: profileTheme.blue,
           text: 'Log Out',
+          onPressed: () {},
         )
       ],
     );
