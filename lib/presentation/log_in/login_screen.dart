@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
     final dimindLoginScreenTheme = DimindLoginScreenTheme.of(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
             style: dimindLoginScreenTheme.welcomeTextStyle,
           ),
           const SizedBox(
-            height: 80,
+            height: 65,
           ),
           const LoginFields(),
           const SizedBox(

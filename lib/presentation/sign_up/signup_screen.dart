@@ -13,6 +13,7 @@ class SignupScreen extends StatelessWidget {
     final dimindSignupScreenTheme = DimindSignupScreenTheme.of(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: dimindSignupScreenTheme.colorTheme.backgroundPrimary,
       ),
@@ -23,22 +24,16 @@ class SignupScreen extends StatelessWidget {
             'Registration',
             style: dimindSignupScreenTheme.registerTextStyle,
           ),
-          const SizedBox(
-            height: 80,
-          ),
+          const SizedBox(height: 80),
           const SignUpFields(),
-          const SizedBox(
-            height: 50,
-          ),
+          const Spacer(),
           CustomRoundedButton(
             text: 'Sign Up',
             backgroundColor: dimindSignupScreenTheme.blueColor,
             isExpanded: false,
             onPressed: () {},
           ),
-          const SizedBox(
-            height: 130,
-          ),
+          const Spacer()
         ],
       ),
     );

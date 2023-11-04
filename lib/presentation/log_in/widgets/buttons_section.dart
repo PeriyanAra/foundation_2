@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foundation_2/presentation/common/widgets/custom_rounded_button.dart';
-import 'package:foundation_2/presentation/theme/dimind_colors_palette.dart';
+import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
 
 class ButtonsSection extends StatelessWidget {
   const ButtonsSection({
@@ -14,13 +14,15 @@ class ButtonsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dimindLoginScreenTheme = DimindLoginScreenTheme.of(context);
+
     return Column(
       children: [
         CustomRoundedButton(
           isExpanded: false,
           text: 'Log In',
           onPressed: onLoginPressed,
-          backgroundColor: DimindColorsPalette.electricGreen,
+          backgroundColor: dimindLoginScreenTheme.greenColor,
         ),
         const SizedBox(
           height: 5,
@@ -34,7 +36,7 @@ class ButtonsSection extends StatelessWidget {
           onPressed: onGooglePressed,
           hasImage: true,
           imageAsset: 'assets/google_logo.svg',
-          backgroundColor: DimindColorsPalette.blue10,
+          backgroundColor: dimindLoginScreenTheme.lightBlue,
         ),
       ],
     );
