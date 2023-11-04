@@ -14,8 +14,19 @@ class AuthRemoteDataSource extends AuthDataSource {
   final FirebaseAuth _firebaseAuth;
 
   @override
-  Future<Result<void, FailureResult>> logOut() {
-    throw UnimplementedError();
+  Future<Result<void, FailureResult>> logOut() async {
+    try {
+      await _firebaseAuth.signOut();
+
+      return const Result.success(null);
+    } on FirebaseAuthException catch (e) {
+      return Result.failure(
+        FailureResult(
+          reason: FailureReasons.unknown,
+          debugMessage: e.toString(),
+        ),
+      );
+    }
   }
 
   @override
