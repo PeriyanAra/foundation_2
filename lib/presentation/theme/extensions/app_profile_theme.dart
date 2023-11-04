@@ -19,16 +19,17 @@ class AppProfileTheme extends ThemeExtension<AppProfileTheme> {
 
   Color get light => DimindColorsPalette.light;
 
-
   Gradient get profileGradient => LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [blue, lightBlue, white],
-  );
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [blue, lightBlue, white],
+      );
 
   double get profileNameFontSize => 22.0;
 
-  double get avatarHeightAndWidth => 150.0;
+  double get avatarHeightAndWidth => 80.0;
+
+  double get avatarBorderRadius => 60.0;
 
   @override
   ThemeExtension<AppProfileTheme> copyWith({

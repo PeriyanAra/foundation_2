@@ -12,10 +12,10 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Card(
-          color: profileTheme.light,
+        const Padding(padding: EdgeInsets.only(top: 50)),
+        CircleAvatar(
+          radius: profileTheme.avatarBorderRadius,
           child: SizedBox(
             height: profileTheme.avatarHeightAndWidth,
             width: profileTheme.avatarHeightAndWidth,
