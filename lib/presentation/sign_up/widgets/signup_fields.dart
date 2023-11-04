@@ -5,18 +5,27 @@ import 'package:foundation_2/presentation/theme/extensions/signup_screen_theme.d
 class SignUpFields extends StatelessWidget {
   const SignUpFields({
     super.key,
+    required this.passwordEditingController,
+    required this.emailTextEditingController,
+    required this.nameTextEditingController,
+    required this.repeatedPasswordTextEditingController,
   });
+  final TextEditingController passwordEditingController;
+  final TextEditingController emailTextEditingController;
+  final TextEditingController nameTextEditingController;
+  final TextEditingController repeatedPasswordTextEditingController;
 
   @override
   Widget build(BuildContext context) {
     final dimindSignupScreenTheme = DimindSignupScreenTheme.of(context);
 
-    return  Column(
+    return Column(
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindSignupScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
             labelText: 'Username',
+            textEditingController: emailTextEditingController,
           ),
         ),
         const SizedBox(
@@ -24,8 +33,9 @@ class SignUpFields extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindSignupScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
             labelText: 'Name',
+            textEditingController: nameTextEditingController,
           ),
         ),
         const SizedBox(
@@ -33,8 +43,9 @@ class SignUpFields extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindSignupScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
             labelText: 'Password',
+            textEditingController: passwordEditingController,
             obscureText: true,
           ),
         ),
@@ -43,8 +54,9 @@ class SignUpFields extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindSignupScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
             labelText: 'Repeat password',
+            textEditingController: repeatedPasswordTextEditingController,
             obscureText: true,
           ),
         ),

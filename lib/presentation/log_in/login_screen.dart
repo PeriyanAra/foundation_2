@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foundation_2/presentation/common/blocs/auth_bloc/auth_bloc.dart';
 import 'package:foundation_2/presentation/log_in/widgets/buttons_section.dart';
 import 'package:foundation_2/presentation/log_in/widgets/login_fields.dart';
 import 'package:foundation_2/presentation/sign_up/signup_screen.dart';
 import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
   });
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late TextEditingController passwordEditingController;
+  late TextEditingController emailTextEditingController;
+
+  @override
+  void initState() {
+    passwordEditingController = TextEditingController();
+    emailTextEditingController = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +42,31 @@ class LoginScreen extends StatelessWidget {
           const SizedBox(
             height: 65,
           ),
-          const LoginFields(),
+          LoginFields(
+            passwordEditingController: passwordEditingController,
+            emailTextEditingController: emailTextEditingController,
+          ),
           const SizedBox(
             height: 50,
           ),
-          ButtonsSection(
-            onLoginPressed: () {},
-            onGooglePressed: () {},
+          BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              return ButtonsSection(
+                onLoginPressed: () {
+                  context.read<AuthBloc>().add(
+                        AuthEvent.login(
+                          emailValue: emailTextEditingController.text,
+                          passwordValue: passwordEditingController.text,
+                        ),
+                      );
+                },
+                onGooglePressed: () {
+                  context.read<AuthBloc>().add(
+                        const AuthEvent.signInWithGoogle(),
+                      );
+                },
+              );
+            },
           ),
           const SizedBox(
             height: 80,

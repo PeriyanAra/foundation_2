@@ -5,7 +5,12 @@ import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.da
 class LoginFields extends StatelessWidget {
   const LoginFields({
     super.key,
+    required this.emailTextEditingController,
+    required this.passwordEditingController,
   });
+
+  final TextEditingController emailTextEditingController;
+  final TextEditingController passwordEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,8 @@ class LoginFields extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
+            textEditingController: emailTextEditingController,
             labelText: 'Email address',
           ),
         ),
@@ -24,7 +30,8 @@ class LoginFields extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
-          child: const CustomTextField(
+          child: CustomTextField(
+            textEditingController: passwordEditingController,
             labelText: 'Password',
             obscureText: true,
           ),

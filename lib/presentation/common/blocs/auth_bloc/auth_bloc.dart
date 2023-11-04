@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:foundation_2/domain/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
@@ -10,15 +9,13 @@ part 'auth_bloc.freezed.dart';
 // final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({
-    required AuthUseCase authUseCase,
-  })  : _authUseCase = authUseCase,
+  AuthBloc()  :
         super(const AuthInitialState()) {
     on<LoginAuthEvent>(_handleLoginAuthEvent);
     on<LogoutAuthEvent>(_handleLogoutAuthEvent);
     on<SignInWithGoogleAuthEvent>(_handleSignInWithGoogleAuthEvent);
   }
-  final AuthUseCase _authUseCase;
+  // final AuthUseCase _authUseCase;
 
   void _handleLoginAuthEvent(
     LoginAuthEvent event,
@@ -35,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     try {
-      await _authUseCase.loginWithGoogle();
+      // await _authUseCase.loginWithGoogle();
     } catch (e) {
       emit(AuthState.error(errorMessage: e.toString()));
     }

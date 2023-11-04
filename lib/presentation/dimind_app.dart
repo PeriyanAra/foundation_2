@@ -16,7 +16,7 @@ class _DimindAppState extends State<DimindApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(authUseCase: di<AuthBloc>()),
+      create: (context) => AuthBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'DiMind',

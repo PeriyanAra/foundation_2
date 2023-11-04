@@ -9,7 +9,6 @@ class AppSharedDependencies extends Dependencies {
     di
       ..registerSingleton<AppThemeModeSettings>(
         await AppThemeModeSettings.createInstance(appKeyValueStorage: di()),
-      )
-      ..registerSingleton<AuthBloc>(AuthBloc(authUseCase:di()));
+      );
   }
 }
