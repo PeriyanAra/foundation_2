@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
+import 'package:foundation_2/presentation/common/blocs/auth_bloc/auth_bloc.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,7 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: const Text('Dark'),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEvent.signInWithGoogle());
+            },
             child: const Text('Go to settings'),
           ),
         ],

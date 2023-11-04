@@ -26,6 +26,7 @@ Future<void> mainShared(
           errorDetails.stack ?? StackTrace.empty,
         );
       };
+      await Firebase.initializeApp();
 
       final di = DiGetItImplementation();
       await registerAppDependencies(di);
