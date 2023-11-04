@@ -13,6 +13,7 @@ class SignupScreen extends StatelessWidget {
     final dimindSignupScreenTheme = DimindSignupScreenTheme.of(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: dimindSignupScreenTheme.colorTheme.backgroundPrimary,
       ),

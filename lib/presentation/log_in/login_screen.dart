@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
     final dimindLoginScreenTheme = DimindLoginScreenTheme.of(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
