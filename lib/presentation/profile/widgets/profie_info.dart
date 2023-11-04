@@ -22,10 +22,6 @@ class ProfileInfo extends StatelessWidget {
             child: SvgPicture.asset('assets/images/people.svg'),
           ),
         ),
-        // CircleAvatar(
-        //   radius: profileTheme.avatarBorderRadius,
-        //   foregroundImage: const AssetImage('assets/images/profile.png'),
-        // ),
         const Padding(padding: EdgeInsets.only(top: 20)),
         Text(
           name,
