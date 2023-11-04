@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:foundation_2/domain/domain.dart';
+import 'package:foundation_2/presentation/common/extensions/validation_extension.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
@@ -21,6 +22,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     try {
+      if (event.emailValue.validateEmail().isNotEmpty) {
+        emit(
+          AuthState.error(
+            errorMessage: event.emailValue.validateEmail(),
+          ),
+        );
+      }
+
       await _authUseCase.login(
         entity: const AuthRequestEntity(
           password: 'password',
