@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foundation_2/presentation/common/blocs/auth_bloc/auth_bloc.dart';
-import 'package:foundation_2/presentation/common/widgets/custom_rounded_button.dart';
+import 'package:foundation_2/presentation/common/export.dart';
 import 'package:foundation_2/presentation/sign_up/widgets/signup_fields.dart';
 import 'package:foundation_2/presentation/theme/extensions/signup_screen_theme.dart';
 
