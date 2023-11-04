@@ -1,31 +1,49 @@
 import 'package:bloc/bloc.dart';
+import 'package:foundation_2/domain/auth/index.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
-// final FirebaseAuth _auth = FirebaseAuth.instance;
-// final GoogleSignIn googleSignIn = GoogleSignIn();
-
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(const AuthInitialState()) {
+  AuthBloc({required AuthUseCase authUseCase})
+      : _authUseCase = authUseCase,
+        super(const AuthInitialState()) {
     on<LoginAuthEvent>(_handleLoginAuthEvent);
     on<LogoutAuthEvent>(_handleLogoutAuthEvent);
     on<SignInWithGoogleAuthEvent>(_handleSignInWithGoogleAuthEvent);
   }
-  // final AuthUseCase _authUseCase;
+  final AuthUseCase _authUseCase;
 
-  void _handleLoginAuthEvent(
+  Future<void> _handleLoginAuthEvent(
     LoginAuthEvent event,
     Emitter<AuthState> emit,
-  ) {}
+  ) async {
+    try {
+      await _authUseCase.login(
+        entity: const AuthRequestEntity(
+          password: 'password',
+          email: 'email',
+        ),
+      );
 
-  void _handleLogoutAuthEvent(
+      emit(const AuthState.authenticated());
+    } catch (e) {
+      emit(AuthState.error(errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> _handleLogoutAuthEvent(
     LogoutAuthEvent event,
     Emitter<AuthState> emit,
-  ) {
-    try {} catch (e) {}
+  ) async {
+    try {
+      await _authUseCase.logOut();
+      emit(const AuthState.unAuthenticated());
+    } catch (e) {
+      emit(AuthState.error(errorMessage: e.toString()));
+    }
   }
 
   Future<void> _handleSignInWithGoogleAuthEvent(
@@ -33,7 +51,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     try {
-      // await _authUseCase.loginWithGoogle();
+      await _authUseCase.loginWithGoogle();
+      emit(const AuthState.authenticated());
     } catch (e) {
       emit(AuthState.error(errorMessage: e.toString()));
     }

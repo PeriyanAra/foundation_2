@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TextButton(
             onPressed: () {
-              context.read<AppThemeMode>().updateThemeMode(ThemeMode.light);
+              context.read<AuthBloc>().add(const AuthEvent.login());
             },
             child: const Text('Light'),
           ),
