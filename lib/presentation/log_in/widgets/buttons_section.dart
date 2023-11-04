@@ -35,7 +35,7 @@ class ButtonsSection extends StatelessWidget {
           isExpanded: false,
           onPressed: onGooglePressed,
           hasImage: true,
-          imageAsset: 'assets/google_logo.svg',
+          imageAsset: 'assets/images/google_logo.svg',
           backgroundColor: dimindLoginScreenTheme.lightBlue,
         ),
       ],
