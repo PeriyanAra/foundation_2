@@ -11,7 +11,7 @@ class DimindLoginScreenTheme extends ThemeExtension<DimindLoginScreenTheme> {
   double get horizontalPadding => 24.0;
 
   TextStyle get welcomeTextStyle => TextStyle(
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 32,
         color: colorTheme.foregroundPrimary,
       );
@@ -21,6 +21,9 @@ class DimindLoginScreenTheme extends ThemeExtension<DimindLoginScreenTheme> {
         fontSize: 16,
         color: DimindColorsPalette.blue60,
       );
+
+  Color get greenColor => DimindColorsPalette.electricGreen;
+  Color get lightBlue => DimindColorsPalette.blue10;
 
   @override
   ThemeExtension<DimindLoginScreenTheme> copyWith({

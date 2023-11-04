@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
             style: dimindLoginScreenTheme.welcomeTextStyle,
           ),
           const SizedBox(
-            height: 80,
+            height: 65,
           ),
           const LoginFields(),
           const SizedBox(
