@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
-import 'package:provider/provider.dart';
+import 'package:foundation_2/presentation/log_in/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,28 +11,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: () {
-              context.read<AppThemeMode>().updateThemeMode(ThemeMode.light);
-            },
-            child: const Text('Light'),
-          ),
-          TextButton(
-            onPressed: () {
-              context.read<AppThemeMode>().updateThemeMode(ThemeMode.dark);
-            },
-            child: const Text('Dark'),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text('Go to settings'),
-          ),
-        ],
-      ),
-    );
+    return const LoginScreen();
   }
 }

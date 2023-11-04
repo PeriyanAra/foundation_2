@@ -3,6 +3,7 @@ import 'dart:ui';
 class DimindColorsPalette {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color white20 = Color(0xFFFFE8E8);
   static const Color light = Color(0xFFCCCCCC);
 
   static const Color darkRed = Color(0xFFAC0E00);
@@ -10,10 +11,12 @@ class DimindColorsPalette {
   static const Color red40 = Color(0xFFDE7E74);
   static const Color red50 = Color(0xFFD55A4E);
   static const Color red60 = Color(0xFFB6382C);
+  static const Color electricGreen = Color.fromARGB(255, 42, 207, 42);
 
   static const Color yellow60 = Color(0xFFFCC624);
 
   static const Color blue60 = Color(0xFF00539F);
+  static const Color blue10 = Color.fromARGB(255, 214, 235, 255);
 
   static const Color skin60 = Color(0xFFD69A8C);
 
