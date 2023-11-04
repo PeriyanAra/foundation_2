@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:foundation_2/domain/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
@@ -6,7 +7,8 @@ part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc()  :
+  AuthBloc({required AuthUseCase authUseCase})
+      : _authUseCase = authUseCase,
         super(const AuthInitialState()) {
     on<LoginAuthEvent>(_handleLoginAuthEvent);
     on<LogoutAuthEvent>(_handleLogoutAuthEvent);
