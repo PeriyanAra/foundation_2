@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:foundation_2/presentation/theme/dimind_color.dart';
 import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
 import 'package:foundation_2/presentation/theme/dimind_colors_palette.dart';
+import 'package:foundation_2/presentation/theme/extensions/app_profile_theme.dart';
 
 class DimindTheme {
   static ThemeData light() {
     final colorTheme = _lightColorTheme();
+    final profileTheme = AppProfileTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -16,14 +18,13 @@ class DimindTheme {
       splashFactory: NoSplash.splashFactory,
       highlightColor: Colors.transparent,
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
-      extensions: <ThemeExtension<dynamic>>[
-        colorTheme,
-      ],
+      extensions: <ThemeExtension<dynamic>>[colorTheme, profileTheme],
     );
   }
 
   static ThemeData dark() {
     final colorTheme = _darkColorTheme();
+    final profileTheme = AppProfileTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -36,6 +37,7 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        profileTheme
       ],
     );
   }

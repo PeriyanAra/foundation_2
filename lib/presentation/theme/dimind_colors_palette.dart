@@ -5,6 +5,7 @@ class DimindColorsPalette {
   static const Color white = Color(0xFFFFFFFF);
   static const Color light = Color(0xFFCCCCCC);
 
+  static const Color darkRed = Color(0xFFAC0E00);
   static const Color red10 = Color(0xFFF9E8E6);
   static const Color red40 = Color(0xFFDE7E74);
   static const Color red50 = Color(0xFFD55A4E);
@@ -15,6 +16,9 @@ class DimindColorsPalette {
   static const Color blue60 = Color(0xFF00539F);
 
   static const Color skin60 = Color(0xFFD69A8C);
+
+  static const Color blue = Color(0xFF71BFF7);
+  static const Color lightBlue = Color(0xFFB2D8F3);
 
   static const Color gray10 = Color(0xFFF5F5F5);
   static const Color gray50 = Color(0xFFB0BDC8);
