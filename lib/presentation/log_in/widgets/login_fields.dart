@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/common/widgets/custom_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foundation_2/presentation/common/export.dart';
 import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
 
 class LoginFields extends StatelessWidget {
@@ -16,30 +17,36 @@ class LoginFields extends StatelessWidget {
   Widget build(BuildContext context) {
     final dimindLoginScreenTheme = DimindLoginScreenTheme.of(context);
 
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
-          child: CustomTextField(
-            textEditingController: emailTextEditingController,
-            labelText: 'Email address',
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
-          child: CustomTextField(
-            textEditingController: passwordEditingController,
-            labelText: 'Password',
-            obscureText: true,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
+              child: CustomTextField(
+                textEditingController: emailTextEditingController,
+                labelText: 'Email address',
+                hasError: state is AuthErrorState,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: dimindLoginScreenTheme.horizontalPadding),
+              child: CustomTextField(
+                textEditingController: passwordEditingController,
+                labelText: 'Password',
+                obscureText: true,
+                hasError: state is AuthErrorState,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        );
+      },
     );
   }
 }

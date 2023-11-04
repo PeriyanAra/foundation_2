@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/common/widgets/custom_rounded_button.dart';
+import 'package:foundation_2/presentation/common/export.dart';
 import 'package:foundation_2/presentation/theme/extensions/login_screen_theme.dart';
 
 class ButtonsSection extends StatelessWidget {
