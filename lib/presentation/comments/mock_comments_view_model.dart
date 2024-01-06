@@ -1,6 +1,6 @@
+import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
+import 'package:foundation_2/presentation/comments/view_models/comments_section_view_model.dart';
 import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
-import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
-import 'package:foundation_2/presentation/home/view_models/comments_section_view_model.dart';
 
 final commentsMockViewModel = CommentsSectionViewModel(
   user: const UserViewModel(
@@ -16,6 +16,17 @@ final commentsMockViewModel = CommentsSectionViewModel(
         avatarPath: 'assets/images/user_avatar_1.png',
       ),
       postedDateTime: DateTime.now(),
+      replies: [
+        CommentViewModel(
+          id: '12',
+          text: 'Beautiful',
+          user: const UserViewModel(
+            username: 'Hamlet',
+            avatarPath: 'assets/images/user_avatar_1.png',
+          ),
+          postedDateTime: DateTime.now(),
+        ),
+      ],
     ),
     CommentViewModel(
       id: '2',

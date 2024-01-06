@@ -4,14 +4,14 @@ import 'package:foundation_2/presentation/comments/comments_screen.dart';
 import 'package:foundation_2/presentation/theme/dimind_theme.dart';
 import 'package:provider/provider.dart';
 
-class DimindApp extends StatefulWidget {
-  const DimindApp({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<DimindApp> createState() => _DimindAppState();
+  State<App> createState() => _AppState();
 }
 
-class _DimindAppState extends State<DimindApp> {
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
