@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foundation_2/presentation/common/extensions/passed_time_extension.dart';
+import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
 import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
 
-class ActivityCommentListTile extends StatefulWidget {
-  const ActivityCommentListTile({
+class InstagramCommentListTile extends StatefulWidget {
+  const InstagramCommentListTile({
     super.key,
     this.isReply = false,
     this.isFirstReply = false,
@@ -15,10 +16,10 @@ class ActivityCommentListTile extends StatefulWidget {
   final bool isFirstReply;
 
   @override
-  State<ActivityCommentListTile> createState() => _ActivityCommentListTileState();
+  State<InstagramCommentListTile> createState() => _InstagramCommentListTileState();
 }
 
-class _ActivityCommentListTileState extends State<ActivityCommentListTile> {
+class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
   bool isReliesOpen = false;
 
   @override
@@ -36,13 +37,8 @@ class _ActivityCommentListTileState extends State<ActivityCommentListTile> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                foregroundImage: AssetImage(widget.comment.user.avatarPath),
-                backgroundColor: Colors.red,
-                child: SvgPicture.asset(
-                  'assets/icons/avatar.svg',
-                  height: 24.0,
-                ),
+              UserAvatar(
+                avatarPath: widget.comment.user.avatarPath,
               ),
               SizedBox(width: 10.0),
               Expanded(
@@ -90,7 +86,7 @@ class _ActivityCommentListTileState extends State<ActivityCommentListTile> {
           ),
           SizedBox(height: 8.0),
           if (widget.comment.replies.isNotEmpty)
-            ActivityCommentListTile(
+            InstagramCommentListTile(
               comment: widget.comment.replies.first,
               isReply: true,
             ),
@@ -125,7 +121,7 @@ class _ActivityCommentListTileState extends State<ActivityCommentListTile> {
                         return const SizedBox.shrink();
                       }
 
-                      return ActivityCommentListTile(
+                      return InstagramCommentListTile(
                         comment: reply,
                         isReply: true,
                         isFirstReply: index == 1,

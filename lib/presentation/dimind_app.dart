@@ -17,6 +17,7 @@ class _DimindAppState extends State<DimindApp> {
     return MaterialApp(
       title: 'DiMind',
       theme: DimindTheme.light(),
+      debugShowCheckedModeBanner: false,
       darkTheme: DimindTheme.dark(),
       themeMode: context.watch<AppThemeMode>().themeMode,
       home: const HomeScreen(),
