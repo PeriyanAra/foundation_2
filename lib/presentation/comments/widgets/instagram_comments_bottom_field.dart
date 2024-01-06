@@ -91,7 +91,7 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                         get<CommentsScreenBloc>().add(
                           CommentsScreenEvent.add(
                             comment: CommentViewModel(
-                              id: Uuid().v4(),
+                              id: const Uuid().v4(),
                               text: _textEditingController.text,
                               user: widget.user,
                               postedDateTime: DateTime.now(),

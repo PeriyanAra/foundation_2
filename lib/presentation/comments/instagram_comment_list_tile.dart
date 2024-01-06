@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:foundation_2/core/di/register_app_dependencies.dart';
+import 'package:foundation_2/presentation/comments/bloc/comments_screen_bloc.dart';
 import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
 import 'package:foundation_2/presentation/common/extensions/passed_time_extension.dart';
 import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
+import 'package:provider/provider.dart';
 
 class InstagramCommentListTile extends StatefulWidget {
   const InstagramCommentListTile({
@@ -26,7 +29,7 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
     return Padding(
       padding: widget.isReply
           ? const EdgeInsets.only(
-              left: 88.0,
+              left: 80.0,
               top: 10,
               bottom: 10,
             )
@@ -52,13 +55,21 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
                           widget.comment.postedDateTime.toString().getPassedTime(),
                         ),
                         const Spacer(),
-                        const Padding(
-                          padding: EdgeInsets.only(
+                        Padding(
+                          padding: const EdgeInsets.only(
                             left: 10.0,
                           ),
-                          child: Icon(
-                            Icons.favorite_border,
-                            size: 18,
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<CommentsScreenBloc>().add(
+                                CommentsScreenEvent.like(id: widget.comment.id),
+                              );
+                            },
+                            child: Icon(
+                              Icons.favorite_border,
+                              size: 18,
+                              color: widget.comment.isLiked ? Colors.red : Colors.black,
+                            ),
                           ),
                         ),
                       ],
