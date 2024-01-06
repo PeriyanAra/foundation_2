@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/comments/widgets/app_bottom_sheet.dart';
 import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
 
 class CommentsScreen extends StatefulWidget {
@@ -18,9 +17,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
     final colorTheme = DimindColorTheme.of(context);
 
     return Scaffold(
-      backgroundColor: colorTheme.backgroundTertiary,
+      backgroundColor: colorTheme.foregroundSecondary,
       appBar: AppBar(
-        backgroundColor: colorTheme.backgroundPrimary.withOpacity(0.6),
+        backgroundColor: colorTheme.foregroundSecondary,
         title: Text(
           'Comments Screen',
           style: TextStyle(color: colorTheme.foregroundTertiary),
@@ -41,7 +40,46 @@ class _CommentsScreenState extends State<CommentsScreen> {
             icon: const Icon(Icons.comment),
             iconSize: 30,
           ),
-          const AppBottomSheet(),
+          Flexible(
+            child: DraggableScrollableSheet(
+              initialChildSize: 0,
+              minChildSize: 0,
+              snap: true,
+              snapSizes: const [0.5],
+              controller: _controller,
+              builder: (BuildContext context, ScrollController scrollController) {
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: colorTheme.backgroundPrimary,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: CustomScrollView(
+                    controller: scrollController,
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 5,
+                              width: 50,
+                              margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: colorTheme.backgroundTertiary,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
