@@ -12,12 +12,7 @@ class CommentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: get<CommentsScreenBloc>()
-        ..add(
-          CommentsScreenEvent.like(
-            id: 1.toString(),
-          ),
-        ),
+      value: get<CommentsScreenBloc>()..add(const CommentsScreenEvent.get()),
       child: Scaffold(
         body: Column(
           children: [

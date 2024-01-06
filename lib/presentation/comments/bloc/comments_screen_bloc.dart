@@ -97,7 +97,6 @@ class CommentsScreenBloc extends Bloc<CommentsScreenEvent, CommentsScreenState> 
     CommentLikeEvent event,
     Emitter<CommentsScreenState> emit,
   ) {
-    add(const CommentsScreenEvent.get());
     if (state is CommentsScreenLoadedState) {
       final currentState = state as CommentsScreenLoadedState;
       final currentComments = currentState.commentsSectionViewModel.comments;

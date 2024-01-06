@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/core/di/register_app_dependencies.dart';
 import 'package:foundation_2/presentation/comments/bloc/comments_screen_bloc.dart';
 import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
 import 'package:foundation_2/presentation/common/extensions/passed_time_extension.dart';
@@ -62,11 +61,11 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
                           child: GestureDetector(
                             onTap: () {
                               context.read<CommentsScreenBloc>().add(
-                                CommentsScreenEvent.like(id: widget.comment.id),
-                              );
+                                    CommentsScreenEvent.like(id: widget.comment.id),
+                                  );
                             },
                             child: Icon(
-                              Icons.favorite_border,
+                              widget.comment.isLiked ? Icons.favorite : Icons.favorite_border,
                               size: 18,
                               color: widget.comment.isLiked ? Colors.red : Colors.black,
                             ),
