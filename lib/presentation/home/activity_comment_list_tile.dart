@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foundation_2/presentation/home/passed_time_extension.dart';
+import 'package:foundation_2/presentation/common/extensions/passed_time_extension.dart';
 import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
 
 class ActivityCommentListTile extends StatefulWidget {

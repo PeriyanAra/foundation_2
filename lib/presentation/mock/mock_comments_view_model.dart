@@ -92,7 +92,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
         username: 'Samo',
         avatarPath: 'assets/images/user_avatar_1.png',
       ),
-      postedDateTime: DateTime.now(),
+      postedDateTime:DateTime(2023, 12, 7, 17, 30),
       likes: 5000,
       replies: [
         CommentViewModel(
@@ -152,11 +152,11 @@ final commentsMockViewModel = CommentsSectionViewModel(
             username: 'Jenny',
             avatarPath: 'assets/images/user_avatar_4.png',
           ),
-          postedDateTime: DateTime.now(),
+          postedDateTime: DateTime(2023, 10, 7, 18, 30),
           likes: 1,
         ),
       ],
-      postedDateTime: DateTime.now(),
+      postedDateTime: DateTime(2023, 9, 7, 17, 30),
     ),
     CommentViewModel(
       id: '16',
