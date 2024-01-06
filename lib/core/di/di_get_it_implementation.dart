@@ -1,14 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:foundation_2/core/di/di.dart';
 import 'package:get_it/get_it.dart' hide FactoryFunc, FactoryFuncParam, DisposingFunc;
 
 class DiGetItImplementation implements DI {
-  DiGetItImplementation() : getIt = GetIt.asNewInstance();
+  DiGetItImplementation();
 
-  @visibleForTesting
-  final GetIt getIt;
-
-  // final Map<Type, InstanceProvider<Object>> _overrides = {};
+  static final GetIt getIt = GetIt.asNewInstance();
 
   @override
   T get<T extends Object>({String? instanceName}) => getIt.get(instanceName: instanceName);

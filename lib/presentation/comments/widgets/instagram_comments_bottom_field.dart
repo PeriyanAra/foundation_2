@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foundation_2/presentation/comments/widgets/filled_text_field.dart';
 import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
 import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
 import 'package:foundation_2/presentation/theme/extensions/comments_bottom_field_theme.dart';
-import 'package:foundation_2/presentation/widgets/filled_text_field.dart';
 
 class InstagramCommentsBottomField extends StatefulWidget {
   const InstagramCommentsBottomField({

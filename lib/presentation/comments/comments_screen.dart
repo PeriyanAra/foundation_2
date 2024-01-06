@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/home/instagram_comment_list_tile.dart';
-import 'package:foundation_2/presentation/mock/mock_comments_view_model.dart';
-import 'package:foundation_2/presentation/widgets/instagram_comments_bottom_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foundation_2/core/di/register_app_dependencies.dart';
+import 'package:foundation_2/presentation/comments/bloc/comments_screen_bloc.dart';
+import 'package:foundation_2/presentation/comments/instagram_comment_list_tile.dart';
+import 'package:foundation_2/presentation/comments/mock/mock_comments_view_model.dart';
+import 'package:foundation_2/presentation/comments/widgets/instagram_comments_bottom_field.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  bool isReply = false;
+class CommentsScreen extends StatelessWidget {
+  const CommentsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocProvider.value(
+      value: get<CommentsScreenBloc>()
+        ..add(
+          CommentsScreenEvent.delete(
+            id: 12.toString(),
+          ),
+        ),
+      child: Scaffold(
       body: Column(
         children: [
           Expanded(
@@ -36,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
            InstagramCommentsBottomField(user:commentsMockViewModel.user),
         ],
       ),
+    )
     );
   }
 }

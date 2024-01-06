@@ -8,6 +8,8 @@
 .buildlog/
 .history
 .svn/
+.lock
+
 
 # IntelliJ related
 *.iml
@@ -52,7 +54,6 @@ flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
-.lock
 
 # FVM will create a relative symlink from .fvm/flutter_sdk to the cache of the selected version
 **/.fvm/flutter_sdk

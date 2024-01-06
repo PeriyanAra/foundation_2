@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
 import 'package:foundation_2/presentation/common/extensions/passed_time_extension.dart';
 import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
-import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
 
 class InstagramCommentListTile extends StatefulWidget {
   const InstagramCommentListTile({
