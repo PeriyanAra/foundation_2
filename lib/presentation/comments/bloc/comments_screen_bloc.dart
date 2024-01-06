@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:foundation_2/presentation/comments/mock/mock_comments_view_model.dart';
 import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
 import 'package:foundation_2/presentation/comments/view_models/comments_section_view_model.dart';
-import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comments_screen_event.dart';
@@ -65,25 +62,63 @@ class CommentsScreenBloc extends Bloc<CommentsScreenEvent, CommentsScreenState> 
     CommentDeleteEvent event,
     Emitter<CommentsScreenState> emit,
   ) {
-    emit(
-      CommentsScreenState.loaded(commentsSectionViewModel: commentsMockViewModel),
-    );
-
     if (state is CommentsScreenLoadedState) {
       final currentState = state as CommentsScreenLoadedState;
       final currentComments = currentState.commentsSectionViewModel.comments;
 
       final updatedComments = currentComments.where((comment) => comment.id != event.id).toList();
+      final updatedCommentsReplies = <CommentViewModel>[];
 
       if (updatedComments.length == currentComments.length) {
         for (final comment in currentComments) {
-          final originalRepliesCount = comment.replies.length;
-          comment.replies.removeWhere((reply) => reply.id == event.id);
+          final replies = <CommentViewModel>[];
 
-          if (originalRepliesCount != comment.replies.length) {
-            updatedComments[updatedComments.indexOf(comment)] =
-                comment.copyWith(replies: comment.replies);
+          for (final reply in comment.replies) {
+            if (reply.id != event.id) {
+              replies.add(reply);
+            }
           }
+
+          updatedCommentsReplies.add(comment.copyWith(replies: replies));
+        }
+      }
+
+      emit(
+        CommentsScreenState.loaded(
+          commentsSectionViewModel: currentState.commentsSectionViewModel.copyWith(
+            comments: updatedCommentsReplies.isEmpty ? updatedComments : updatedCommentsReplies,
+          ),
+        ),
+      );
+    }
+  }
+
+  void _handleCommentLikeEvent(
+    CommentLikeEvent event,
+    Emitter<CommentsScreenState> emit,
+  ) {
+    add(const CommentsScreenEvent.get());
+    if (state is CommentsScreenLoadedState) {
+      final currentState = state as CommentsScreenLoadedState;
+      final currentComments = currentState.commentsSectionViewModel.comments;
+      final updatedComments = <CommentViewModel>[];
+
+      for (final comment in currentComments) {
+        if (comment.id == event.id) {
+          updatedComments.add(
+            comment.copyWith(isLiked: !comment.isLiked),
+          );
+        } else {
+          final replies = <CommentViewModel>[];
+
+          for (final reply in comment.replies) {
+            if (reply.id == event.id) {
+              replies.add(reply.copyWith(isLiked: !reply.isLiked));
+            } else {
+              replies.add(reply);
+            }
+          }
+          updatedComments.add(comment.copyWith(replies: replies));
         }
       }
 
@@ -94,20 +129,5 @@ class CommentsScreenBloc extends Bloc<CommentsScreenEvent, CommentsScreenState> 
         ),
       );
     }
-    log('{name}------------->${state}');
-  }
-
-  void _handleCommentLikeEvent(
-    CommentLikeEvent event,
-    Emitter<CommentsScreenState> emit,
-  ) {
-    emit(
-      const CommentsScreenState.loaded(
-        commentsSectionViewModel: CommentsSectionViewModel(
-          user: UserViewModel(username: '', avatarPath: 'avatarPath'),
-          comments: [],
-        ),
-      ),
-    );
   }
 }

@@ -11,6 +11,7 @@ class CommentViewModel with _$CommentViewModel {
     required UserViewModel user,
     required DateTime postedDateTime,
     @Default(0) int likes,
+    @Default(false) bool isLiked,
     @Default([]) List<CommentViewModel> replies,
   }) = _CommentViewModel;
 

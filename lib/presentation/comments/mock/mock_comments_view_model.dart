@@ -18,7 +18,16 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
       replies: [
         CommentViewModel(
-          id: '12',
+          id: '122',
+          text: 'Beautiful',
+          user: const UserViewModel(
+            username: 'Hamlet',
+            avatarPath: 'assets/images/user_avatar_1.png',
+          ),
+          postedDateTime: DateTime.now(),
+        ),
+        CommentViewModel(
+          id: '122',
           text: 'Beautiful',
           user: const UserViewModel(
             username: 'Hamlet',
