@@ -103,12 +103,15 @@ class __$$_UserViewModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserViewModel extends _UserViewModel {
-  const _$_UserViewModel({required this.username, required this.avatarPath})
+  const _$_UserViewModel(
+      {required this.username,
+      this.avatarPath = 'assets/images/user_avatar.jpg'})
       : super._();
 
   @override
   final String username;
   @override
+  @JsonKey()
   final String avatarPath;
 
   @override
@@ -140,7 +143,7 @@ class _$_UserViewModel extends _UserViewModel {
 abstract class _UserViewModel extends UserViewModel {
   const factory _UserViewModel(
       {required final String username,
-      required final String avatarPath}) = _$_UserViewModel;
+      final String avatarPath}) = _$_UserViewModel;
   const _UserViewModel._() : super._();
 
   @override

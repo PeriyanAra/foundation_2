@@ -6,7 +6,7 @@ part 'user_view_model.freezed.dart';
 class UserViewModel with _$UserViewModel {
   const factory UserViewModel({
     required String username,
-    required String avatarPath,
+    @Default('assets/images/user_avatar.jpg') String avatarPath,
   }) = _UserViewModel;
 
   const UserViewModel._();
