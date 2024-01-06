@@ -9,6 +9,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
   ),
   comments: [
     CommentViewModel(
+      id: '1',
       text: 'Beautiful',
       user: const UserViewModel(
         username: 'Hamlet',
@@ -17,6 +18,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
     ),
     CommentViewModel(
+      id: '2',
       text: 'Amaizing',
       user: const UserViewModel(
         username: 'Narek',
@@ -26,6 +28,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       likes: 340,
     ),
     CommentViewModel(
+      id: '3',
       text: 'Great',
       user: const UserViewModel(
         username: 'Gexam',
@@ -35,6 +38,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       likes: 169,
     ),
     CommentViewModel(
+      id: '4',
       text: 'I dont like it',
       user: const UserViewModel(
         username: 'Vardges102',
@@ -43,6 +47,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
       replies: [
         CommentViewModel(
+          id: '5',
           text: 'Why?',
           user: const UserViewModel(
             username: 'Narek',
@@ -53,6 +58,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       ],
     ),
     CommentViewModel(
+      id: '6',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Narek_',
@@ -61,6 +67,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
     ),
     CommentViewModel(
+      id: '7',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Sopha',
@@ -70,6 +77,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       likes: 46,
     ),
     CommentViewModel(
+      id: '8',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Abul',
@@ -78,6 +86,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
     ),
     CommentViewModel(
+      id: '9',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Samo',
@@ -87,6 +96,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       likes: 5000,
       replies: [
         CommentViewModel(
+          id: '10',
           text: 'I agree with you',
           user: const UserViewModel(
             username: 'Gexam',
@@ -96,6 +106,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
           likes: 4,
         ),
         CommentViewModel(
+          id: '11',
           text: 'I agree with you',
           user: const UserViewModel(
             username: 'Jhonny',
@@ -107,6 +118,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       ],
     ),
     CommentViewModel(
+      id: '12',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Serj',
@@ -115,6 +127,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
       postedDateTime: DateTime.now(),
     ),
     CommentViewModel(
+      id: '13',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Jhonny',

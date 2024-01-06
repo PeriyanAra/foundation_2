@@ -6,6 +6,7 @@ part 'comment_view_model.freezed.dart';
 @freezed
 class CommentViewModel with _$CommentViewModel {
   const factory CommentViewModel({
+    required String id,
     required String text,
     required UserViewModel user,
     required DateTime postedDateTime,

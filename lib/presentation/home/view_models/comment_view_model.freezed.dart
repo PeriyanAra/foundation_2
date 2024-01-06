@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CommentViewModel {
+  String get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   UserViewModel get user => throw _privateConstructorUsedError;
   DateTime get postedDateTime => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ abstract class $CommentViewModelCopyWith<$Res> {
       _$CommentViewModelCopyWithImpl<$Res, CommentViewModel>;
   @useResult
   $Res call(
-      {String text,
+      {String id,
+      String text,
       UserViewModel user,
       DateTime postedDateTime,
       List<CommentViewModel> replies,
@@ -56,6 +58,7 @@ class _$CommentViewModelCopyWithImpl<$Res, $Val extends CommentViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? user = null,
     Object? postedDateTime = null,
@@ -63,6 +66,10 @@ class _$CommentViewModelCopyWithImpl<$Res, $Val extends CommentViewModel>
     Object? likes = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -104,7 +111,8 @@ abstract class _$$_CommentViewModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String text,
+      {String id,
+      String text,
       UserViewModel user,
       DateTime postedDateTime,
       List<CommentViewModel> replies,
@@ -125,6 +133,7 @@ class __$$_CommentViewModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? text = null,
     Object? user = null,
     Object? postedDateTime = null,
@@ -132,6 +141,10 @@ class __$$_CommentViewModelCopyWithImpl<$Res>
     Object? likes = null,
   }) {
     return _then(_$_CommentViewModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -160,7 +173,8 @@ class __$$_CommentViewModelCopyWithImpl<$Res>
 
 class _$_CommentViewModel extends _CommentViewModel {
   const _$_CommentViewModel(
-      {required this.text,
+      {required this.id,
+      required this.text,
       required this.user,
       required this.postedDateTime,
       final List<CommentViewModel> replies = const [],
@@ -168,6 +182,8 @@ class _$_CommentViewModel extends _CommentViewModel {
       : _replies = replies,
         super._();
 
+  @override
+  final String id;
   @override
   final String text;
   @override
@@ -189,7 +205,7 @@ class _$_CommentViewModel extends _CommentViewModel {
 
   @override
   String toString() {
-    return 'CommentViewModel(text: $text, user: $user, postedDateTime: $postedDateTime, replies: $replies, likes: $likes)';
+    return 'CommentViewModel(id: $id, text: $text, user: $user, postedDateTime: $postedDateTime, replies: $replies, likes: $likes)';
   }
 
   @override
@@ -197,6 +213,7 @@ class _$_CommentViewModel extends _CommentViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommentViewModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.postedDateTime, postedDateTime) ||
@@ -206,7 +223,7 @@ class _$_CommentViewModel extends _CommentViewModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, text, user, postedDateTime,
+  int get hashCode => Object.hash(runtimeType, id, text, user, postedDateTime,
       const DeepCollectionEquality().hash(_replies), likes);
 
   @JsonKey(ignore: true)
@@ -218,13 +235,16 @@ class _$_CommentViewModel extends _CommentViewModel {
 
 abstract class _CommentViewModel extends CommentViewModel {
   const factory _CommentViewModel(
-      {required final String text,
+      {required final String id,
+      required final String text,
       required final UserViewModel user,
       required final DateTime postedDateTime,
       final List<CommentViewModel> replies,
       final int likes}) = _$_CommentViewModel;
   const _CommentViewModel._() : super._();
 
+  @override
+  String get id;
   @override
   String get text;
   @override
