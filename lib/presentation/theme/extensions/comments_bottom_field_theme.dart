@@ -11,10 +11,25 @@ class CommentsBottomFieldTheme extends ThemeExtension<CommentsBottomFieldTheme> 
   final DimindColorTheme _colorTheme;
 
   DimindColor get backgroundColor => _colorTheme.backgroundPrimary;
+  EdgeInsets get rightPadding =>  const EdgeInsets.only(right: 16.0);
 
-  Color get gray60 => DimindColorsPalette.gray60;
+  Color get gray => DimindColorsPalette.gray60;
+  Color get blue => DimindColorsPalette.blue60;
+  double get fixedSize16 => 16.0;
+  double get fixedSize10 => 10.0;
+  double get fixedSize8 => 8.0;
 
   Color get whiteColor => DimindColorsPalette.white;
+
+  TextStyle get emojiTextStyle => const TextStyle(fontSize: 24.0);
+  TextStyle get postButtonTextStyle =>  TextStyle(color: blue);
+
+  InputBorder get outlineInputBorder => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20.0),
+        borderSide: BorderSide(
+          color: gray,
+        ),
+      );
 
   @override
   ThemeExtension<CommentsBottomFieldTheme> copyWith({

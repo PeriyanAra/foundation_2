@@ -42,15 +42,17 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(color: commentsBottomFieldTheme.gray60, width: 0.3),
+          top: BorderSide(color: commentsBottomFieldTheme.gray, width: 0.3),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: commentsBottomFieldTheme.fixedSize16,
+        ),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: EdgeInsets.only(top: commentsBottomFieldTheme.fixedSize8),
               child: SizedBox(
                 height: 30.0,
                 width: double.infinity,
@@ -63,7 +65,7 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                         onTap: () => _onEmojiTap(emojisList, index),
                         child: Text(
                           emojisList[index],
-                          style: const TextStyle(fontSize: 24.0),
+                          style: commentsBottomFieldTheme.emojiTextStyle,
                         ),
                       ),
                     ),
@@ -81,9 +83,11 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    padding: EdgeInsets.symmetric(
+                      vertical: commentsBottomFieldTheme.fixedSize16,
+                    ),
                     child: FilledTextField(
-                      hintText: 'Add a comment for ${widget.user.username} ',
+                      hintText: "Add a comment for ${widget.user.username}'s post",
                       controller: _textEditingController,
                       dismissOnTapOutside: true,
                     ),

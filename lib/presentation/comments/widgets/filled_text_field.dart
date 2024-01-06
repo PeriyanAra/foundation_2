@@ -31,17 +31,16 @@ class _FilledTextFieldState extends State<FilledTextField> {
       controller: widget.controller,
       minLines: 1,
       maxLines: 6,
-      keyboardType: TextInputType.multiline,
       style: TextStyle(color: commentsBottomFieldTheme.whiteColor),
       decoration: InputDecoration(
-        suffixIconConstraints: const BoxConstraints(
-          minHeight: 16.0,
-          minWidth: 16.0,
+        suffixIconConstraints: BoxConstraints(
+          minHeight: commentsBottomFieldTheme.fixedSize16,
+          minWidth: commentsBottomFieldTheme.fixedSize16,
         ),
-        contentPadding: const EdgeInsets.fromLTRB(16.0, 0, 0, 0),
+        contentPadding: EdgeInsets.fromLTRB(commentsBottomFieldTheme.fixedSize10, 0, 0, 0),
         suffixIcon: widget.controller.text.isEmpty
             ? Container(
-                padding: const EdgeInsets.only(right: 16),
+                padding: commentsBottomFieldTheme.rightPadding,
                 child: SvgPicture.asset(
                   'assets/icons/sticker.svg',
                   colorFilter: ColorFilter.mode(
@@ -52,36 +51,21 @@ class _FilledTextFieldState extends State<FilledTextField> {
               )
             : GestureDetector(
                 onTap: widget.onPostTap,
-                child: const Padding(
-                  padding: EdgeInsets.only(right: 16.0),
+                child: Padding(
+                  padding: commentsBottomFieldTheme.rightPadding,
                   child: Text(
                     'Post',
-                    style: TextStyle(color: Colors.blue),
+                    style: commentsBottomFieldTheme.postButtonTextStyle,
                   ),
                 ),
               ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          borderSide: BorderSide(
-            color: commentsBottomFieldTheme.gray60,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          borderSide: BorderSide(
-            color: commentsBottomFieldTheme.gray60,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
-          borderSide: BorderSide(
-            color: commentsBottomFieldTheme.gray60,
-          ),
-        ),
+        focusedBorder: commentsBottomFieldTheme.outlineInputBorder,
+        enabledBorder: commentsBottomFieldTheme.outlineInputBorder,
+        border: commentsBottomFieldTheme.outlineInputBorder,
         filled: true,
         fillColor: commentsBottomFieldTheme.backgroundColor,
         hintStyle: TextStyle(
-          color: commentsBottomFieldTheme.gray60,
+          color: commentsBottomFieldTheme.gray,
         ),
         hintText: widget.hintText,
       ),
