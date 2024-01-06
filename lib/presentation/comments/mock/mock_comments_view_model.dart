@@ -1,6 +1,6 @@
+import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
+import 'package:foundation_2/presentation/comments/view_models/comments_section_view_model.dart';
 import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
-import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
-import 'package:foundation_2/presentation/home/view_models/comments_section_view_model.dart';
 
 final commentsMockViewModel = CommentsSectionViewModel(
   user: const UserViewModel(
@@ -16,6 +16,17 @@ final commentsMockViewModel = CommentsSectionViewModel(
         avatarPath: 'assets/images/user_avatar_1.png',
       ),
       postedDateTime: DateTime.now(),
+      replies: [
+        CommentViewModel(
+          id: '12',
+          text: 'Beautiful',
+          user: const UserViewModel(
+            username: 'Hamlet',
+            avatarPath: 'assets/images/user_avatar_1.png',
+          ),
+          postedDateTime: DateTime.now(),
+        ),
+      ],
     ),
     CommentViewModel(
       id: '2',
@@ -92,7 +103,7 @@ final commentsMockViewModel = CommentsSectionViewModel(
         username: 'Samo',
         avatarPath: 'assets/images/user_avatar_1.png',
       ),
-      postedDateTime: DateTime.now(),
+      postedDateTime:DateTime(2023, 12, 7, 17, 30),
       likes: 5000,
       replies: [
         CommentViewModel(
@@ -115,19 +126,51 @@ final commentsMockViewModel = CommentsSectionViewModel(
           postedDateTime: DateTime.now(),
           likes: 2,
         ),
+        CommentViewModel(
+          id: '12',
+          text: "I don't see you you",
+          user: const UserViewModel(
+            username: 'Merry',
+            avatarPath: 'assets/images/user_avatar_1.png',
+          ),
+          postedDateTime: DateTime.now(),
+          likes: 10,
+        ),
       ],
     ),
     CommentViewModel(
-      id: '12',
+      id: '13',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Serj',
         avatarPath: 'assets/images/user_avatar_5.png',
       ),
-      postedDateTime: DateTime.now(),
+      replies: [
+        CommentViewModel(
+          id: '14',
+          text: 'Who are you?',
+          user: const UserViewModel(
+            username: 'Mike',
+            avatarPath: 'assets/images/user_avatar_2.png',
+          ),
+          postedDateTime: DateTime.now(),
+          likes: 20,
+        ),
+        CommentViewModel(
+          id: '15',
+          text: 'You are best',
+          user: const UserViewModel(
+            username: 'Jenny',
+            avatarPath: 'assets/images/user_avatar_4.png',
+          ),
+          postedDateTime: DateTime(2023, 10, 7, 18, 30),
+          likes: 1,
+        ),
+      ],
+      postedDateTime: DateTime(2023, 9, 7, 17, 30),
     ),
     CommentViewModel(
-      id: '13',
+      id: '16',
       text: 'Try to get more practice',
       user: const UserViewModel(
         username: 'Jhonny',

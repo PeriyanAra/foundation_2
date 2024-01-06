@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
-import 'package:foundation_2/presentation/home/home_screen.dart';
+import 'package:foundation_2/presentation/comments/comments_screen.dart';
 import 'package:foundation_2/presentation/theme/dimind_theme.dart';
 import 'package:provider/provider.dart';
 
-class DimindApp extends StatefulWidget {
-  const DimindApp({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<DimindApp> createState() => _DimindAppState();
+  State<App> createState() => _AppState();
 }
 
-class _DimindAppState extends State<DimindApp> {
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +20,7 @@ class _DimindAppState extends State<DimindApp> {
       debugShowCheckedModeBanner: false,
       darkTheme: DimindTheme.dark(),
       themeMode: context.watch<AppThemeMode>().themeMode,
-      home: const HomeScreen(),
+      home: const CommentsScreen(),
     );
   }
 }

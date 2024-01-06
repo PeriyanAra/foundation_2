@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:foundation_2/presentation/comments/widgets/filled_text_field.dart';
+import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
+import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
 import 'package:foundation_2/presentation/theme/extensions/comments_bottom_field_theme.dart';
-import 'package:foundation_2/presentation/widgets/filled_text_field.dart';
 
 class InstagramCommentsBottomField extends StatefulWidget {
   const InstagramCommentsBottomField({
     super.key,
+    required this.user,
   });
+  final UserViewModel user;
 
   @override
   State<InstagramCommentsBottomField> createState() => _InstagramCommentsBottomFieldState();
@@ -69,7 +73,9 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
             ),
             Row(
               children: [
-                const CircleAvatar(),
+                UserAvatar(
+                  avatarPath: widget.user.avatarPath,
+                ),
                 const SizedBox(
                   width: 10.0,
                 ),
@@ -77,8 +83,9 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: FilledTextField(
-                      hintText: 'Add a comment for " " ',
+                      hintText: 'Add a comment for ${widget.user.username} ',
                       controller: _textEditingController,
+                      dismissOnTapOutside: true,
                     ),
                   ),
                 ),
