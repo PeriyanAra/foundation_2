@@ -9,12 +9,14 @@ class FilledTextField extends StatefulWidget {
     required this.controller,
     this.onChanged,
     this.dismissOnTapOutside = false,
+    required this.onPostTap,
   });
 
   final String hintText;
   final ValueChanged<String>? onChanged;
   final bool dismissOnTapOutside;
   final TextEditingController controller;
+  final void Function() onPostTap;
 
   @override
   State<FilledTextField> createState() => _FilledTextFieldState();
@@ -48,11 +50,14 @@ class _FilledTextFieldState extends State<FilledTextField> {
                   ),
                 ),
               )
-            : const Padding(
-                padding: EdgeInsets.only(right: 16.0),
-                child: Text(
-                  'Post',
-                  style: TextStyle(color: Colors.blue),
+            : GestureDetector(
+                onTap: widget.onPostTap,
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 16.0),
+                  child: Text(
+                    'Post',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ),
         focusedBorder: OutlineInputBorder(

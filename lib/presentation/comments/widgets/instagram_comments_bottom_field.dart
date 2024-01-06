@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:foundation_2/core/di/register_app_dependencies.dart';
+import 'package:foundation_2/presentation/comments/bloc/comments_screen_bloc.dart';
+import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
 import 'package:foundation_2/presentation/comments/widgets/filled_text_field.dart';
 import 'package:foundation_2/presentation/common/view_models/user_view_model.dart';
 import 'package:foundation_2/presentation/common/widgets/user_avatar.dart';
 import 'package:foundation_2/presentation/theme/extensions/comments_bottom_field_theme.dart';
+import 'package:uuid/uuid.dart';
 
 class InstagramCommentsBottomField extends StatefulWidget {
   const InstagramCommentsBottomField({
@@ -83,6 +87,18 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: FilledTextField(
+                      onPostTap: () {
+                        get<CommentsScreenBloc>().add(
+                          CommentsScreenEvent.add(
+                            comment: CommentViewModel(
+                              id: Uuid().v4(),
+                              text: _textEditingController.text,
+                              user: widget.user,
+                              postedDateTime: DateTime.now(),
+                            ),
+                          ),
+                        );
+                      },
                       hintText: 'Add a comment for ${widget.user.username} ',
                       controller: _textEditingController,
                       dismissOnTapOutside: true,

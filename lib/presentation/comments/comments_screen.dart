@@ -24,12 +24,22 @@ class CommentsScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
-                child: ListView.builder(
-                  itemCount: commentsMockViewModel.comments.length,
-                  itemBuilder: (context, index) {
-                    final comment = commentsMockViewModel.comments[index];
-                    return InstagramCommentListTile(
-                      comment: comment,
+                child: BlocBuilder<CommentsScreenBloc, CommentsScreenState>(
+                  builder: (context, state) {
+                    return state.when(
+                      loading: CircularProgressIndicator.new,
+                      loaded: (viewModel) {
+                        return ListView.builder(
+                          itemCount: viewModel.comments.length,
+                          itemBuilder: (context, index) {
+                            final comment = viewModel.comments[index];
+
+                            return InstagramCommentListTile(
+                              comment: comment,
+                            );
+                          },
+                        );
+                      },
                     );
                   },
                 ),
