@@ -10,10 +10,7 @@ dependencies:
   bloc: ^8.1.2
   flutter:
     sdk: flutter
-<<<<<<< HEAD
-=======
   flutter_bloc: ^8.1.3
->>>>>>> 51be0cbe7fb6846cbdfce109bae78821009d66d6
   flutter_svg: ^2.0.9
   freezed_annotation: ^2.4.1
   get_it: ^7.6.0
@@ -32,13 +29,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-<<<<<<< HEAD
   assets: 
     - assets/
     - assets/icons/
     - assets/images/
-=======
-  assets:
-    - assets/icons/
-    - assets/images/
->>>>>>> 51be0cbe7fb6846cbdfce109bae78821009d66d6
