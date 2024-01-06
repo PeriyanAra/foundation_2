@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foundation_2/core/di/register_app_dependencies.dart';
 import 'package:foundation_2/presentation/comments/bloc/comments_screen_bloc.dart';
 import 'package:foundation_2/presentation/comments/instagram_comment_list_tile.dart';
-import 'package:foundation_2/presentation/comments/mock/mock_comments_view_model.dart';
 import 'package:foundation_2/presentation/comments/widgets/instagram_comments_bottom_field.dart';
 
 class CommentsScreen extends StatelessWidget {
@@ -14,17 +13,17 @@ class CommentsScreen extends StatelessWidget {
     return BlocProvider.value(
       value: get<CommentsScreenBloc>()..add(const CommentsScreenEvent.get()),
       child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
-                child: BlocBuilder<CommentsScreenBloc, CommentsScreenState>(
-                  builder: (context, state) {
-                    return state.when(
-                      loading: CircularProgressIndicator.new,
-                      loaded: (viewModel) {
-                        return ListView.builder(
+        body: BlocBuilder<CommentsScreenBloc, CommentsScreenState>(
+          builder: (context, state) {
+            return state.when(
+              loading: CircularProgressIndicator.new,
+              loaded: (viewModel) {
+                return Column(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
+                        child: ListView.builder(
                           itemCount: viewModel.comments.length,
                           itemBuilder: (context, index) {
                             final comment = viewModel.comments[index];
@@ -33,15 +32,15 @@ class CommentsScreen extends StatelessWidget {
                               comment: comment,
                             );
                           },
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ),
-            InstagramCommentsBottomField(user: commentsMockViewModel.user),
-          ],
+                        ),
+                      ),
+                    ),
+                    InstagramCommentsBottomField(user: viewModel.user),
+                  ],
+                );
+              },
+            );
+          },
         ),
       ),
     );

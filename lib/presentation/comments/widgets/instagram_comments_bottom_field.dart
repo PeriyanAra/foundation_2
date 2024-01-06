@@ -98,6 +98,8 @@ class _InstagramCommentsBottomFieldState extends State<InstagramCommentsBottomFi
                             ),
                           ),
                         );
+
+                        _textEditingController.clear();
                       },
                       hintText: 'Add a comment for ${widget.user.username} ',
                       controller: _textEditingController,
