@@ -12,32 +12,33 @@ class CommentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-        value: get<CommentsScreenBloc>()
-          ..add(
-            CommentsScreenEvent.like(
-              id: 1.toString(),
-            ),
+      value: get<CommentsScreenBloc>()
+        ..add(
+          CommentsScreenEvent.like(
+            id: 1.toString(),
           ),
-        child: Scaffold(
-          body: Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
-                  child: ListView.builder(
-                    itemCount: commentsMockViewModel.comments.length,
-                    itemBuilder: (context, index) {
-                      final comment = commentsMockViewModel.comments[index];
-                      return InstagramCommentListTile(
-                        comment: comment,
-                      );
-                    },
-                  ),
+        ),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
+                child: ListView.builder(
+                  itemCount: commentsMockViewModel.comments.length,
+                  itemBuilder: (context, index) {
+                    final comment = commentsMockViewModel.comments[index];
+                    return InstagramCommentListTile(
+                      comment: comment,
+                    );
+                  },
                 ),
               ),
-              InstagramCommentsBottomField(user: commentsMockViewModel.user),
-            ],
-          ),
-        ));
+            ),
+            InstagramCommentsBottomField(user: commentsMockViewModel.user),
+          ],
+        ),
+      ),
+    );
   }
 }

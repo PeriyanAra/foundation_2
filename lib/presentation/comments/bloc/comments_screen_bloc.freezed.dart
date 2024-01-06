@@ -656,9 +656,6 @@ mixin _$CommentsScreenState {
     required TResult Function() loading,
     required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
         loaded,
-    required TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)
-        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -666,18 +663,12 @@ mixin _$CommentsScreenState {
     TResult? Function()? loading,
     TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
         loaded,
-    TResult? Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
-    TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -685,21 +676,18 @@ mixin _$CommentsScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(CommentsScreenLoadingState value) loading,
     required TResult Function(CommentsScreenLoadedState value) loaded,
-    required TResult Function(CommentsScreenErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommentsScreenLoadingState value)? loading,
     TResult? Function(CommentsScreenLoadedState value)? loaded,
-    TResult? Function(CommentsScreenErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommentsScreenLoadingState value)? loading,
     TResult Function(CommentsScreenLoadedState value)? loaded,
-    TResult Function(CommentsScreenErrorState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -768,9 +756,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
     required TResult Function() loading,
     required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
         loaded,
-    required TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)
-        error,
   }) {
     return loading();
   }
@@ -781,9 +766,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
     TResult? Function()? loading,
     TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
         loaded,
-    TResult? Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
   }) {
     return loading?.call();
   }
@@ -793,9 +775,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
-    TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -809,7 +788,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(CommentsScreenLoadingState value) loading,
     required TResult Function(CommentsScreenLoadedState value) loaded,
-    required TResult Function(CommentsScreenErrorState value) error,
   }) {
     return loading(this);
   }
@@ -819,7 +797,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommentsScreenLoadingState value)? loading,
     TResult? Function(CommentsScreenLoadedState value)? loaded,
-    TResult? Function(CommentsScreenErrorState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -829,7 +806,6 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommentsScreenLoadingState value)? loading,
     TResult Function(CommentsScreenLoadedState value)? loaded,
-    TResult Function(CommentsScreenErrorState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -925,9 +901,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
     required TResult Function() loading,
     required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
         loaded,
-    required TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)
-        error,
   }) {
     return loaded(commentsSectionViewModel);
   }
@@ -938,9 +911,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
     TResult? Function()? loading,
     TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
         loaded,
-    TResult? Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
   }) {
     return loaded?.call(commentsSectionViewModel);
   }
@@ -950,9 +920,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
-    TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -966,7 +933,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
   TResult map<TResult extends Object?>({
     required TResult Function(CommentsScreenLoadingState value) loading,
     required TResult Function(CommentsScreenLoadedState value) loaded,
-    required TResult Function(CommentsScreenErrorState value) error,
   }) {
     return loaded(this);
   }
@@ -976,7 +942,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CommentsScreenLoadingState value)? loading,
     TResult? Function(CommentsScreenLoadedState value)? loaded,
-    TResult? Function(CommentsScreenErrorState value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -986,7 +951,6 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CommentsScreenLoadingState value)? loading,
     TResult Function(CommentsScreenLoadedState value)? loaded,
-    TResult Function(CommentsScreenErrorState value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1004,183 +968,5 @@ abstract class CommentsScreenLoadedState implements CommentsScreenState {
   CommentsSectionViewModel get commentsSectionViewModel;
   @JsonKey(ignore: true)
   _$$CommentsScreenLoadedStateCopyWith<_$CommentsScreenLoadedState>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CommentsScreenErrorStateCopyWith<$Res> {
-  factory _$$CommentsScreenErrorStateCopyWith(_$CommentsScreenErrorState value,
-          $Res Function(_$CommentsScreenErrorState) then) =
-      __$$CommentsScreenErrorStateCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {String errorMessage, CommentsSectionViewModel commentsSectionViewModel});
-
-  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel;
-}
-
-/// @nodoc
-class __$$CommentsScreenErrorStateCopyWithImpl<$Res>
-    extends _$CommentsScreenStateCopyWithImpl<$Res, _$CommentsScreenErrorState>
-    implements _$$CommentsScreenErrorStateCopyWith<$Res> {
-  __$$CommentsScreenErrorStateCopyWithImpl(_$CommentsScreenErrorState _value,
-      $Res Function(_$CommentsScreenErrorState) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMessage = null,
-    Object? commentsSectionViewModel = null,
-  }) {
-    return _then(_$CommentsScreenErrorState(
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
-      commentsSectionViewModel: null == commentsSectionViewModel
-          ? _value.commentsSectionViewModel
-          : commentsSectionViewModel // ignore: cast_nullable_to_non_nullable
-              as CommentsSectionViewModel,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel {
-    return $CommentsSectionViewModelCopyWith<$Res>(
-        _value.commentsSectionViewModel, (value) {
-      return _then(_value.copyWith(commentsSectionViewModel: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$CommentsScreenErrorState implements CommentsScreenErrorState {
-  const _$CommentsScreenErrorState(
-      {required this.errorMessage, required this.commentsSectionViewModel});
-
-  @override
-  final String errorMessage;
-  @override
-  final CommentsSectionViewModel commentsSectionViewModel;
-
-  @override
-  String toString() {
-    return 'CommentsScreenState.error(errorMessage: $errorMessage, commentsSectionViewModel: $commentsSectionViewModel)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CommentsScreenErrorState &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(
-                    other.commentsSectionViewModel, commentsSectionViewModel) ||
-                other.commentsSectionViewModel == commentsSectionViewModel));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, errorMessage, commentsSectionViewModel);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CommentsScreenErrorStateCopyWith<_$CommentsScreenErrorState>
-      get copyWith =>
-          __$$CommentsScreenErrorStateCopyWithImpl<_$CommentsScreenErrorState>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
-        loaded,
-    required TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)
-        error,
-  }) {
-    return error(errorMessage, commentsSectionViewModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
-        loaded,
-    TResult? Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
-  }) {
-    return error?.call(errorMessage, commentsSectionViewModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
-    TResult Function(String errorMessage,
-            CommentsSectionViewModel commentsSectionViewModel)?
-        error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(errorMessage, commentsSectionViewModel);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CommentsScreenLoadingState value) loading,
-    required TResult Function(CommentsScreenLoadedState value) loaded,
-    required TResult Function(CommentsScreenErrorState value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CommentsScreenLoadingState value)? loading,
-    TResult? Function(CommentsScreenLoadedState value)? loaded,
-    TResult? Function(CommentsScreenErrorState value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommentsScreenLoadingState value)? loading,
-    TResult Function(CommentsScreenLoadedState value)? loaded,
-    TResult Function(CommentsScreenErrorState value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CommentsScreenErrorState implements CommentsScreenState {
-  const factory CommentsScreenErrorState(
-          {required final String errorMessage,
-          required final CommentsSectionViewModel commentsSectionViewModel}) =
-      _$CommentsScreenErrorState;
-
-  String get errorMessage;
-  CommentsSectionViewModel get commentsSectionViewModel;
-  @JsonKey(ignore: true)
-  _$$CommentsScreenErrorStateCopyWith<_$CommentsScreenErrorState>
       get copyWith => throw _privateConstructorUsedError;
 }
