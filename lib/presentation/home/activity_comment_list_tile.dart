@@ -1,128 +1,158 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foundation_2/presentation/home/passed_time_extension.dart';
+import 'package:foundation_2/presentation/home/view_models/comment_view_model.dart';
 
-class ActivityCommentListTile extends StatelessWidget {
-  final bool isReply;
-  final bool isFirstReply;
-
+class ActivityCommentListTile extends StatefulWidget {
   const ActivityCommentListTile({
     super.key,
     this.isReply = false,
     this.isFirstReply = false,
+    required this.comment,
   });
+  final CommentViewModel comment;
+  final bool isReply;
+  final bool isFirstReply;
+
+  @override
+  State<ActivityCommentListTile> createState() => _ActivityCommentListTileState();
+}
+
+class _ActivityCommentListTileState extends State<ActivityCommentListTile> {
+  bool isReliesOpen = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: isReply
+      padding: widget.isReply
           ? EdgeInsets.only(
               left: 88.0,
+              top: 10,
+              bottom: 10,
             )
-          : EdgeInsets.zero,
+          : EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (!isReply)
-                CircleAvatar(
-                  // foregroundImage:\
-                  backgroundColor: Colors.red,
-                  child: SvgPicture.asset(
-                    'assets/icons/avatar.svg',
-                    height: 24.0,
-                  ),
+              CircleAvatar(
+                foregroundImage: AssetImage(widget.comment.user.avatarPath),
+                backgroundColor: Colors.red,
+                child: SvgPicture.asset(
+                  'assets/icons/avatar.svg',
+                  height: 24.0,
                 ),
-              if (!isReply) SizedBox(width: 10.0),
+              ),
+              SizedBox(width: 10.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Text(
-                          "jhon",
-                          // style: isReply
-                          //     ? context.sub2?.copyWith(
-                          //         color: colorConstants.themeTextColor1,
-                          //       )
-                          //     : context.sub1?.copyWith(
-                          //         color: colorConstants.themeTextColor1,
-                          //       ),
-                        ),
+                        Text(widget.comment.user.username),
                         SizedBox(width: 2.0),
                         Text(
-                          DateTime.now().toString().getPassedTime(),
-                          // style: context.sub2?.copyWith(
-                          //   color: colorConstants.mediumGreyColor,
-                          // ),
+                          widget.comment.postedDateTime.toString().getPassedTime(),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10.0,
+                          ),
+                          child: Icon(
+                            Icons.favorite_border,
+                            size: 18,
+                          ),
                         ),
                       ],
                     ),
                     Text(
-                      "test",
-                      // style: context.body2!.copyWith(
-                      //   color: colorConstants.lightGreyColor,
-                      // ),
+                      widget.comment.text,
+                    ),
+                    SizedBox(height: 8.0),
+                    Row(
+                      children: [
+                        if (widget.comment.likes > 0) ...[
+                          Text('Likes: ${widget.comment.likes}'),
+                          SizedBox(
+                            width: 20,
+                          )
+                        ],
+                        Text('Reply'),
+                      ],
                     ),
                   ],
                 ),
               ),
-              if (!isReply)
-                Icon(
-                  Icons.favorite_border,
-                  color: Colors.amber,
-                ),
-              SizedBox(width: 4.0),
             ],
           ),
-
           SizedBox(height: 8.0),
-          // if (activityCommentViewModel.replies.isNotEmpty)
-          //   ActivityCommentListTile(
-          //     activityCommentViewModel: activityCommentViewModel.replies.first,
-          //     isReply: true,
-          //   ),
-          // if (activityCommentViewModel.replies.length > 1)
-          ListTileTheme(
-            dense: false,
-            child: ExpansionTile(
-              childrenPadding: EdgeInsets.zero,
-              tilePadding: EdgeInsets.only(
-                left: 44.0,
-              ),
-            
-              shape: const Border(),
-              title: Text(
-                "testrsdasd",
-                // "${activityCommentViewModel.replies.length - 1} ${appLocalizations.search_activity_replies_text}",
-                // style: context.body2!.copyWith(
-                //   color: colorConstants.lightBlueColor,
-                // ),
-              ),
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    // final reply = activityCommentViewModel.replies[index];
-                    // if (index == 0) {
-                    //   return const SizedBox.shrink();
-                    // }
-
-                    return ActivityCommentListTile(
-                      // activityCommentViewModel: reply,
-                      isReply: true,
-                      isFirstReply: index == 1,
-                    );
-                  },
-                ),
-              ],
+          if (widget.comment.replies.isNotEmpty)
+            ActivityCommentListTile(
+              comment: widget.comment.replies.first,
+              isReply: true,
             ),
-          ),
+          if (widget.comment.replies.length > 1)
+            ListTileTheme(
+              dense: false,
+              child: ExpansionTile(
+                childrenPadding: EdgeInsets.zero,
+                tilePadding: EdgeInsets.only(
+                  left: 88.0,
+                ),
+                onExpansionChanged: (value) {
+                  setState(() {
+                    isReliesOpen = value;
+                  });
+                },
+                shape: const Border(),
+                title: Text(
+                  !isReliesOpen
+                      ? getShowReplyText(widget.comment.replies.length - 1)
+                      : getHideReplyText(widget.comment.replies.length - 1),
+                ),
+                trailing: const SizedBox(),
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.comment.replies.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final reply = widget.comment.replies[index];
+                      if (index == 0) {
+                        return const SizedBox.shrink();
+                      }
+
+                      return ActivityCommentListTile(
+                        comment: reply,
+                        isReply: true,
+                        isFirstReply: index == 1,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );
+  }
+
+  String getShowReplyText(int replyCount) {
+    if (replyCount == 1) {
+      return 'Show 1 Reply';
+    } else {
+      return 'Show $replyCount Replies';
+    }
+  }
+
+  String getHideReplyText(int replyCount) {
+    if (replyCount == 1) {
+      return 'Hide Reply';
+    } else {
+      return 'Hide Replies';
+    }
   }
 }

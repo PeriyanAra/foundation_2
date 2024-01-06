@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer' as dev;
 
 import 'package:flutter/material.dart';
 import 'package:foundation_2/app/app_theme_mode/app_theme_mode.dart';
@@ -11,8 +12,8 @@ import 'package:provider/provider.dart';
 Future<void> mainShared(
   Widget appProvider,
 ) async {
-
-   
+  await runZonedGuarded(
+    () async {
       WidgetsFlutterBinding.ensureInitialized();
 
       FlutterError.onError = (FlutterErrorDetails errorDetails) {
@@ -36,8 +37,14 @@ Future<void> mainShared(
             await registerAppDependencies(di);
           },
         ),
-      
-    
-    
+      );
+    },
+    (error, StackTrace stackTrace) {
+      dev.log(
+        'An unhandled error!',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    },
   );
 }
