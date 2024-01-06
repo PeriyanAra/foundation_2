@@ -19,9 +19,7 @@ mixin _$CommentsScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            String id, String userInfo, String comment, String? parentId)
-        add,
+    required TResult Function(CommentViewModel comment) add,
     required TResult Function(String id) delete,
     required TResult Function(String id) like,
   }) =>
@@ -29,9 +27,7 @@ mixin _$CommentsScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult? Function(CommentViewModel comment)? add,
     TResult? Function(String id)? delete,
     TResult? Function(String id)? like,
   }) =>
@@ -39,9 +35,7 @@ mixin _$CommentsScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult Function(CommentViewModel comment)? add,
     TResult Function(String id)? delete,
     TResult Function(String id)? like,
     required TResult orElse(),
@@ -131,9 +125,7 @@ class _$CommentsGetEvent implements CommentsGetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            String id, String userInfo, String comment, String? parentId)
-        add,
+    required TResult Function(CommentViewModel comment) add,
     required TResult Function(String id) delete,
     required TResult Function(String id) like,
   }) {
@@ -144,9 +136,7 @@ class _$CommentsGetEvent implements CommentsGetEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult? Function(CommentViewModel comment)? add,
     TResult? Function(String id)? delete,
     TResult? Function(String id)? like,
   }) {
@@ -157,9 +147,7 @@ class _$CommentsGetEvent implements CommentsGetEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult Function(CommentViewModel comment)? add,
     TResult Function(String id)? delete,
     TResult Function(String id)? like,
     required TResult orElse(),
@@ -218,7 +206,9 @@ abstract class _$$CommentAddEventCopyWith<$Res> {
           _$CommentAddEvent value, $Res Function(_$CommentAddEvent) then) =
       __$$CommentAddEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, String userInfo, String comment, String? parentId});
+  $Res call({CommentViewModel comment});
+
+  $CommentViewModelCopyWith<$Res> get comment;
 }
 
 /// @nodoc
@@ -232,53 +222,36 @@ class __$$CommentAddEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? userInfo = null,
     Object? comment = null,
-    Object? parentId = freezed,
   }) {
     return _then(_$CommentAddEvent(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userInfo: null == userInfo
-          ? _value.userInfo
-          : userInfo // ignore: cast_nullable_to_non_nullable
-              as String,
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentId: freezed == parentId
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as CommentViewModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentViewModelCopyWith<$Res> get comment {
+    return $CommentViewModelCopyWith<$Res>(_value.comment, (value) {
+      return _then(_value.copyWith(comment: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$CommentAddEvent implements CommentAddEvent {
-  const _$CommentAddEvent(
-      {required this.id,
-      required this.userInfo,
-      required this.comment,
-      this.parentId});
+  const _$CommentAddEvent({required this.comment});
 
   @override
-  final String id;
-  @override
-  final String userInfo;
-  @override
-  final String comment;
-  @override
-  final String? parentId;
+  final CommentViewModel comment;
 
   @override
   String toString() {
-    return 'CommentsScreenEvent.add(id: $id, userInfo: $userInfo, comment: $comment, parentId: $parentId)';
+    return 'CommentsScreenEvent.add(comment: $comment)';
   }
 
   @override
@@ -286,16 +259,11 @@ class _$CommentAddEvent implements CommentAddEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CommentAddEvent &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userInfo, userInfo) ||
-                other.userInfo == userInfo) &&
-            (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.parentId, parentId) ||
-                other.parentId == parentId));
+            (identical(other.comment, comment) || other.comment == comment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, userInfo, comment, parentId);
+  int get hashCode => Object.hash(runtimeType, comment);
 
   @JsonKey(ignore: true)
   @override
@@ -307,41 +275,35 @@ class _$CommentAddEvent implements CommentAddEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            String id, String userInfo, String comment, String? parentId)
-        add,
+    required TResult Function(CommentViewModel comment) add,
     required TResult Function(String id) delete,
     required TResult Function(String id) like,
   }) {
-    return add(id, userInfo, comment, parentId);
+    return add(comment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult? Function(CommentViewModel comment)? add,
     TResult? Function(String id)? delete,
     TResult? Function(String id)? like,
   }) {
-    return add?.call(id, userInfo, comment, parentId);
+    return add?.call(comment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult Function(CommentViewModel comment)? add,
     TResult Function(String id)? delete,
     TResult Function(String id)? like,
     required TResult orElse(),
   }) {
     if (add != null) {
-      return add(id, userInfo, comment, parentId);
+      return add(comment);
     }
     return orElse();
   }
@@ -385,16 +347,10 @@ class _$CommentAddEvent implements CommentAddEvent {
 }
 
 abstract class CommentAddEvent implements CommentsScreenEvent {
-  const factory CommentAddEvent(
-      {required final String id,
-      required final String userInfo,
-      required final String comment,
-      final String? parentId}) = _$CommentAddEvent;
+  const factory CommentAddEvent({required final CommentViewModel comment}) =
+      _$CommentAddEvent;
 
-  String get id;
-  String get userInfo;
-  String get comment;
-  String? get parentId;
+  CommentViewModel get comment;
   @JsonKey(ignore: true)
   _$$CommentAddEventCopyWith<_$CommentAddEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -466,9 +422,7 @@ class _$CommentDeleteEvent implements CommentDeleteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            String id, String userInfo, String comment, String? parentId)
-        add,
+    required TResult Function(CommentViewModel comment) add,
     required TResult Function(String id) delete,
     required TResult Function(String id) like,
   }) {
@@ -479,9 +433,7 @@ class _$CommentDeleteEvent implements CommentDeleteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult? Function(CommentViewModel comment)? add,
     TResult? Function(String id)? delete,
     TResult? Function(String id)? like,
   }) {
@@ -492,9 +444,7 @@ class _$CommentDeleteEvent implements CommentDeleteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult Function(CommentViewModel comment)? add,
     TResult Function(String id)? delete,
     TResult Function(String id)? like,
     required TResult orElse(),
@@ -618,9 +568,7 @@ class _$CommentLikeEvent implements CommentLikeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() get,
-    required TResult Function(
-            String id, String userInfo, String comment, String? parentId)
-        add,
+    required TResult Function(CommentViewModel comment) add,
     required TResult Function(String id) delete,
     required TResult Function(String id) like,
   }) {
@@ -631,9 +579,7 @@ class _$CommentLikeEvent implements CommentLikeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? get,
-    TResult? Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult? Function(CommentViewModel comment)? add,
     TResult? Function(String id)? delete,
     TResult? Function(String id)? like,
   }) {
@@ -644,9 +590,7 @@ class _$CommentLikeEvent implements CommentLikeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? get,
-    TResult Function(
-            String id, String userInfo, String comment, String? parentId)?
-        add,
+    TResult Function(CommentViewModel comment)? add,
     TResult Function(String id)? delete,
     TResult Function(String id)? like,
     required TResult orElse(),
@@ -710,22 +654,30 @@ mixin _$CommentsScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() loaded,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
+        loaded,
+    required TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? loaded,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
+        loaded,
+    TResult? Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function(String errorMessage)? error,
+    TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
+    TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -814,8 +766,11 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() loaded,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
+        loaded,
+    required TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)
+        error,
   }) {
     return loading();
   }
@@ -824,8 +779,11 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? loaded,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
+        loaded,
+    TResult? Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
   }) {
     return loading?.call();
   }
@@ -834,8 +792,10 @@ class _$CommentsScreenLoadingState implements CommentsScreenLoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function(String errorMessage)? error,
+    TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
+    TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -889,6 +849,10 @@ abstract class _$$CommentsScreenLoadedStateCopyWith<$Res> {
           _$CommentsScreenLoadedState value,
           $Res Function(_$CommentsScreenLoadedState) then) =
       __$$CommentsScreenLoadedStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CommentsSectionViewModel commentsSectionViewModel});
+
+  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel;
 }
 
 /// @nodoc
@@ -898,58 +862,101 @@ class __$$CommentsScreenLoadedStateCopyWithImpl<$Res>
   __$$CommentsScreenLoadedStateCopyWithImpl(_$CommentsScreenLoadedState _value,
       $Res Function(_$CommentsScreenLoadedState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? commentsSectionViewModel = null,
+  }) {
+    return _then(_$CommentsScreenLoadedState(
+      commentsSectionViewModel: null == commentsSectionViewModel
+          ? _value.commentsSectionViewModel
+          : commentsSectionViewModel // ignore: cast_nullable_to_non_nullable
+              as CommentsSectionViewModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel {
+    return $CommentsSectionViewModelCopyWith<$Res>(
+        _value.commentsSectionViewModel, (value) {
+      return _then(_value.copyWith(commentsSectionViewModel: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
-  const _$CommentsScreenLoadedState();
+  const _$CommentsScreenLoadedState({required this.commentsSectionViewModel});
+
+  @override
+  final CommentsSectionViewModel commentsSectionViewModel;
 
   @override
   String toString() {
-    return 'CommentsScreenState.loaded()';
+    return 'CommentsScreenState.loaded(commentsSectionViewModel: $commentsSectionViewModel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommentsScreenLoadedState);
+            other is _$CommentsScreenLoadedState &&
+            (identical(
+                    other.commentsSectionViewModel, commentsSectionViewModel) ||
+                other.commentsSectionViewModel == commentsSectionViewModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, commentsSectionViewModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CommentsScreenLoadedStateCopyWith<_$CommentsScreenLoadedState>
+      get copyWith => __$$CommentsScreenLoadedStateCopyWithImpl<
+          _$CommentsScreenLoadedState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() loaded,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
+        loaded,
+    required TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)
+        error,
   }) {
-    return loaded();
+    return loaded(commentsSectionViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? loaded,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
+        loaded,
+    TResult? Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
   }) {
-    return loaded?.call();
+    return loaded?.call(commentsSectionViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function(String errorMessage)? error,
+    TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
+    TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(commentsSectionViewModel);
     }
     return orElse();
   }
@@ -990,7 +997,14 @@ class _$CommentsScreenLoadedState implements CommentsScreenLoadedState {
 }
 
 abstract class CommentsScreenLoadedState implements CommentsScreenState {
-  const factory CommentsScreenLoadedState() = _$CommentsScreenLoadedState;
+  const factory CommentsScreenLoadedState(
+          {required final CommentsSectionViewModel commentsSectionViewModel}) =
+      _$CommentsScreenLoadedState;
+
+  CommentsSectionViewModel get commentsSectionViewModel;
+  @JsonKey(ignore: true)
+  _$$CommentsScreenLoadedStateCopyWith<_$CommentsScreenLoadedState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -999,7 +1013,10 @@ abstract class _$$CommentsScreenErrorStateCopyWith<$Res> {
           $Res Function(_$CommentsScreenErrorState) then) =
       __$$CommentsScreenErrorStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String errorMessage});
+  $Res call(
+      {String errorMessage, CommentsSectionViewModel commentsSectionViewModel});
+
+  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel;
 }
 
 /// @nodoc
@@ -1014,27 +1031,44 @@ class __$$CommentsScreenErrorStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? commentsSectionViewModel = null,
   }) {
     return _then(_$CommentsScreenErrorState(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      commentsSectionViewModel: null == commentsSectionViewModel
+          ? _value.commentsSectionViewModel
+          : commentsSectionViewModel // ignore: cast_nullable_to_non_nullable
+              as CommentsSectionViewModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentsSectionViewModelCopyWith<$Res> get commentsSectionViewModel {
+    return $CommentsSectionViewModelCopyWith<$Res>(
+        _value.commentsSectionViewModel, (value) {
+      return _then(_value.copyWith(commentsSectionViewModel: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$CommentsScreenErrorState implements CommentsScreenErrorState {
-  const _$CommentsScreenErrorState({required this.errorMessage});
+  const _$CommentsScreenErrorState(
+      {required this.errorMessage, required this.commentsSectionViewModel});
 
   @override
   final String errorMessage;
+  @override
+  final CommentsSectionViewModel commentsSectionViewModel;
 
   @override
   String toString() {
-    return 'CommentsScreenState.error(errorMessage: $errorMessage)';
+    return 'CommentsScreenState.error(errorMessage: $errorMessage, commentsSectionViewModel: $commentsSectionViewModel)';
   }
 
   @override
@@ -1043,11 +1077,15 @@ class _$CommentsScreenErrorState implements CommentsScreenErrorState {
         (other.runtimeType == runtimeType &&
             other is _$CommentsScreenErrorState &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(
+                    other.commentsSectionViewModel, commentsSectionViewModel) ||
+                other.commentsSectionViewModel == commentsSectionViewModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, errorMessage, commentsSectionViewModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1061,32 +1099,40 @@ class _$CommentsScreenErrorState implements CommentsScreenErrorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() loaded,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(CommentsSectionViewModel commentsSectionViewModel)
+        loaded,
+    required TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)
+        error,
   }) {
-    return error(errorMessage);
+    return error(errorMessage, commentsSectionViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? loaded,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(CommentsSectionViewModel commentsSectionViewModel)?
+        loaded,
+    TResult? Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
   }) {
-    return error?.call(errorMessage);
+    return error?.call(errorMessage, commentsSectionViewModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? loaded,
-    TResult Function(String errorMessage)? error,
+    TResult Function(CommentsSectionViewModel commentsSectionViewModel)? loaded,
+    TResult Function(String errorMessage,
+            CommentsSectionViewModel commentsSectionViewModel)?
+        error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorMessage);
+      return error(errorMessage, commentsSectionViewModel);
     }
     return orElse();
   }
@@ -1127,10 +1173,13 @@ class _$CommentsScreenErrorState implements CommentsScreenErrorState {
 }
 
 abstract class CommentsScreenErrorState implements CommentsScreenState {
-  const factory CommentsScreenErrorState({required final String errorMessage}) =
+  const factory CommentsScreenErrorState(
+          {required final String errorMessage,
+          required final CommentsSectionViewModel commentsSectionViewModel}) =
       _$CommentsScreenErrorState;
 
   String get errorMessage;
+  CommentsSectionViewModel get commentsSectionViewModel;
   @JsonKey(ignore: true)
   _$$CommentsScreenErrorStateCopyWith<_$CommentsScreenErrorState>
       get copyWith => throw _privateConstructorUsedError;

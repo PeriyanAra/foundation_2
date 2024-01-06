@@ -5,10 +5,7 @@ class CommentsScreenEvent with _$CommentsScreenEvent {
   const factory CommentsScreenEvent.get() = CommentsGetEvent;
 
   const factory CommentsScreenEvent.add({
-    required String id,
-    required String userInfo,
-    required String comment,
-    String? parentId,
+    required CommentViewModel comment,
   }) = CommentAddEvent;
 
   const factory CommentsScreenEvent.delete({

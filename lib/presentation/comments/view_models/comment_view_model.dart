@@ -10,8 +10,8 @@ class CommentViewModel with _$CommentViewModel {
     required String text,
     required UserViewModel user,
     required DateTime postedDateTime,
-    @Default([]) List<CommentViewModel> replies,
     @Default(0) int likes,
+    @Default([]) List<CommentViewModel> replies,
   }) = _CommentViewModel;
 
   const CommentViewModel._();
