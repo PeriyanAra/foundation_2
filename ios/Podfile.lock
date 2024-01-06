@@ -1,25 +1,33 @@
 PODS:
   - Flutter (1.0.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 COCOAPODS: 1.14.2
@@ -29,3 +37,8 @@ COCOAPODS: 1.12.1
 =======
 COCOAPODS: 1.13.0
 >>>>>>> ec6d0fe19e64d29ecf9df99ed3ebb8181a4360b4
+=======
+COCOAPODS: 1.12.1
+=======
+>>>>>>> 51be0cbe7fb6846cbdfce109bae78821009d66d6
+>>>>>>> a5c2b76f4042235c22c3298d64eca964a89b97b2

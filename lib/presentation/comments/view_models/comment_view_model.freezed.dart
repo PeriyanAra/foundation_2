@@ -20,8 +20,8 @@ mixin _$CommentViewModel {
   String get text => throw _privateConstructorUsedError;
   UserViewModel get user => throw _privateConstructorUsedError;
   DateTime get postedDateTime => throw _privateConstructorUsedError;
-  List<CommentViewModel> get replies => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
+  List<CommentViewModel> get replies => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CommentViewModelCopyWith<CommentViewModel> get copyWith =>
@@ -39,8 +39,8 @@ abstract class $CommentViewModelCopyWith<$Res> {
       String text,
       UserViewModel user,
       DateTime postedDateTime,
-      List<CommentViewModel> replies,
-      int likes});
+      int likes,
+      List<CommentViewModel> replies});
 
   $UserViewModelCopyWith<$Res> get user;
 }
@@ -62,8 +62,8 @@ class _$CommentViewModelCopyWithImpl<$Res, $Val extends CommentViewModel>
     Object? text = null,
     Object? user = null,
     Object? postedDateTime = null,
-    Object? replies = null,
     Object? likes = null,
+    Object? replies = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,14 +82,14 @@ class _$CommentViewModelCopyWithImpl<$Res, $Val extends CommentViewModel>
           ? _value.postedDateTime
           : postedDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      replies: null == replies
-          ? _value.replies
-          : replies // ignore: cast_nullable_to_non_nullable
-              as List<CommentViewModel>,
       likes: null == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
+      replies: null == replies
+          ? _value.replies
+          : replies // ignore: cast_nullable_to_non_nullable
+              as List<CommentViewModel>,
     ) as $Val);
   }
 
@@ -115,8 +115,8 @@ abstract class _$$_CommentViewModelCopyWith<$Res>
       String text,
       UserViewModel user,
       DateTime postedDateTime,
-      List<CommentViewModel> replies,
-      int likes});
+      int likes,
+      List<CommentViewModel> replies});
 
   @override
   $UserViewModelCopyWith<$Res> get user;
@@ -137,8 +137,8 @@ class __$$_CommentViewModelCopyWithImpl<$Res>
     Object? text = null,
     Object? user = null,
     Object? postedDateTime = null,
-    Object? replies = null,
     Object? likes = null,
+    Object? replies = null,
   }) {
     return _then(_$_CommentViewModel(
       id: null == id
@@ -157,14 +157,14 @@ class __$$_CommentViewModelCopyWithImpl<$Res>
           ? _value.postedDateTime
           : postedDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      replies: null == replies
-          ? _value._replies
-          : replies // ignore: cast_nullable_to_non_nullable
-              as List<CommentViewModel>,
       likes: null == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
+      replies: null == replies
+          ? _value._replies
+          : replies // ignore: cast_nullable_to_non_nullable
+              as List<CommentViewModel>,
     ));
   }
 }
@@ -177,8 +177,8 @@ class _$_CommentViewModel extends _CommentViewModel {
       required this.text,
       required this.user,
       required this.postedDateTime,
-      final List<CommentViewModel> replies = const [],
-      this.likes = 0})
+      this.likes = 0,
+      final List<CommentViewModel> replies = const []})
       : _replies = replies,
         super._();
 
@@ -190,6 +190,9 @@ class _$_CommentViewModel extends _CommentViewModel {
   final UserViewModel user;
   @override
   final DateTime postedDateTime;
+  @override
+  @JsonKey()
+  final int likes;
   final List<CommentViewModel> _replies;
   @override
   @JsonKey()
@@ -200,12 +203,8 @@ class _$_CommentViewModel extends _CommentViewModel {
   }
 
   @override
-  @JsonKey()
-  final int likes;
-
-  @override
   String toString() {
-    return 'CommentViewModel(id: $id, text: $text, user: $user, postedDateTime: $postedDateTime, replies: $replies, likes: $likes)';
+    return 'CommentViewModel(id: $id, text: $text, user: $user, postedDateTime: $postedDateTime, likes: $likes, replies: $replies)';
   }
 
   @override
@@ -218,13 +217,13 @@ class _$_CommentViewModel extends _CommentViewModel {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.postedDateTime, postedDateTime) ||
                 other.postedDateTime == postedDateTime) &&
-            const DeepCollectionEquality().equals(other._replies, _replies) &&
-            (identical(other.likes, likes) || other.likes == likes));
+            (identical(other.likes, likes) || other.likes == likes) &&
+            const DeepCollectionEquality().equals(other._replies, _replies));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, text, user, postedDateTime,
-      const DeepCollectionEquality().hash(_replies), likes);
+      likes, const DeepCollectionEquality().hash(_replies));
 
   @JsonKey(ignore: true)
   @override
@@ -239,8 +238,8 @@ abstract class _CommentViewModel extends CommentViewModel {
       required final String text,
       required final UserViewModel user,
       required final DateTime postedDateTime,
-      final List<CommentViewModel> replies,
-      final int likes}) = _$_CommentViewModel;
+      final int likes,
+      final List<CommentViewModel> replies}) = _$_CommentViewModel;
   const _CommentViewModel._() : super._();
 
   @override
@@ -252,9 +251,9 @@ abstract class _CommentViewModel extends CommentViewModel {
   @override
   DateTime get postedDateTime;
   @override
-  List<CommentViewModel> get replies;
-  @override
   int get likes;
+  @override
+  List<CommentViewModel> get replies;
   @override
   @JsonKey(ignore: true)
   _$$_CommentViewModelCopyWith<_$_CommentViewModel> get copyWith =>

@@ -45,7 +45,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
               initialChildSize: bottomSheetTheme.initialSize,
               minChildSize: bottomSheetTheme.minChildSize,
               snap: true,
-              snapSizes: const [0.5],
+              snapSizes: [bottomSheetTheme.snapSize],
               controller: _controller,
               builder: (BuildContext context, ScrollController scrollController) {
                 return DecoratedBox(
