@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:foundation_2/presentation/comments/mock/mock_comments_view_model.dart';
 import 'package:foundation_2/presentation/comments/view_models/comment_view_model.dart';
@@ -94,7 +92,6 @@ class CommentsScreenBloc extends Bloc<CommentsScreenEvent, CommentsScreenState> 
         ),
       );
     }
-    log('{name}------------->${state}');
   }
 
   void _handleCommentLikeEvent(

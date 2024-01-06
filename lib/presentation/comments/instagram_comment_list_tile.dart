@@ -25,12 +25,12 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.isReply
-          ? EdgeInsets.only(
-              left: 88.0,
+          ? const EdgeInsets.only(
+              left: 80.0,
               top: 10,
               bottom: 10,
             )
-          : EdgeInsets.symmetric(vertical: 10.0),
+          : const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         children: [
           Row(
@@ -39,7 +39,7 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
               UserAvatar(
                 avatarPath: widget.comment.user.avatarPath,
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,13 +47,13 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
                     Row(
                       children: [
                         Text(widget.comment.user.username),
-                        SizedBox(width: 2.0),
+                        const SizedBox(width: 2.0),
                         Text(
                           widget.comment.postedDateTime.toString().getPassedTime(),
                         ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(
+                        const Spacer(),
+                        const Padding(
+                          padding: EdgeInsets.only(
                             left: 10.0,
                           ),
                           child: Icon(
@@ -66,16 +66,16 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
                     Text(
                       widget.comment.text,
                     ),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                     Row(
                       children: [
                         if (widget.comment.likes > 0) ...[
                           Text('Likes: ${widget.comment.likes}'),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           )
                         ],
-                        Text('Reply'),
+                        const Text('Reply'),
                       ],
                     ),
                   ],
@@ -83,7 +83,7 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
               ),
             ],
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           if (widget.comment.replies.isNotEmpty)
             InstagramCommentListTile(
               comment: widget.comment.replies.first,
@@ -94,7 +94,7 @@ class _InstagramCommentListTileState extends State<InstagramCommentListTile> {
               dense: false,
               child: ExpansionTile(
                 childrenPadding: EdgeInsets.zero,
-                tilePadding: EdgeInsets.only(
+                tilePadding: const EdgeInsets.only(
                   left: 88.0,
                 ),
                 onExpansionChanged: (value) {
