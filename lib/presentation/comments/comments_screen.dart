@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
+import 'package:foundation_2/presentation/theme/extensions/comments_bottom_sheet_theme.dart';
 
 class CommentsScreen extends StatefulWidget {
   const CommentsScreen({super.key});
@@ -14,15 +14,15 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final colorTheme = DimindColorTheme.of(context);
+    final bottomSheetTheme = CommentsBottomSheetTheme.of(context);
 
     return Scaffold(
-      backgroundColor: colorTheme.foregroundSecondary,
+      backgroundColor: bottomSheetTheme.foregroundSecondary,
       appBar: AppBar(
-        backgroundColor: colorTheme.foregroundSecondary,
+        backgroundColor: bottomSheetTheme.foregroundSecondary,
         title: Text(
           'Comments Screen',
-          style: TextStyle(color: colorTheme.foregroundTertiary),
+          style: TextStyle(color: bottomSheetTheme.foregroundTertiary),
         ),
       ),
       body: Stack(
@@ -35,25 +35,25 @@ class _CommentsScreenState extends State<CommentsScreen> {
               });
             },
             style: ButtonStyle(
-              iconColor: colorTheme.foregroundTertiary,
+              iconColor: bottomSheetTheme.foregroundTertiary,
             ),
             icon: const Icon(Icons.comment),
-            iconSize: 30,
+            iconSize: bottomSheetTheme.iconSize,
           ),
           Flexible(
             child: DraggableScrollableSheet(
-              initialChildSize: 0,
-              minChildSize: 0,
+              initialChildSize: bottomSheetTheme.initialSize,
+              minChildSize: bottomSheetTheme.minChildSize,
               snap: true,
               snapSizes: const [0.5],
               controller: _controller,
               builder: (BuildContext context, ScrollController scrollController) {
                 return DecoratedBox(
                   decoration: BoxDecoration(
-                    color: colorTheme.backgroundPrimary,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
+                    color: bottomSheetTheme.backgroundPrimary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(bottomSheetTheme.bottomSheetBorderRadius),
+                      topRight: Radius.circular(bottomSheetTheme.bottomSheetBorderRadius),
                     ),
                   ),
                   child: CustomScrollView(
@@ -63,12 +63,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         child: Column(
                           children: [
                             Container(
-                              height: 5,
-                              width: 50,
-                              margin: const EdgeInsets.only(top: 10),
+                              height: bottomSheetTheme.topLineH,
+                              width: bottomSheetTheme.topLineW,
+                              margin: EdgeInsets.only(top: bottomSheetTheme.topMargin),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: colorTheme.backgroundTertiary,
+                                borderRadius: BorderRadius.circular(bottomSheetTheme.topLineBorderRadius),
+                                color: bottomSheetTheme.backgroundTertiary,
                               ),
                             )
                           ],

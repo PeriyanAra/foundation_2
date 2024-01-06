@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:foundation_2/presentation/theme/dimind_color.dart';
 import 'package:foundation_2/presentation/theme/dimind_color_theme.dart';
 import 'package:foundation_2/presentation/theme/dimind_colors_palette.dart';
+import 'package:foundation_2/presentation/theme/extensions/comments_bottom_field_theme.dart';
+import 'package:foundation_2/presentation/theme/extensions/comments_bottom_sheet_theme.dart';
 
 class DimindTheme {
   static ThemeData light() {
     final colorTheme = _lightColorTheme();
+    final commentsBottomFieldTheme = CommentsBottomFieldTheme(colorTheme: colorTheme);
+    final commentsBottomSheetTheme = CommentsBottomSheetTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -18,12 +22,16 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        commentsBottomFieldTheme,
+        commentsBottomSheetTheme,
       ],
     );
   }
 
   static ThemeData dark() {
     final colorTheme = _darkColorTheme();
+    final commentsBottomFieldTheme = CommentsBottomFieldTheme(colorTheme: colorTheme);
+    final commentsBottomSheetTheme = CommentsBottomSheetTheme(colorTheme: colorTheme);
 
     return ThemeData(
       useMaterial3: true,
@@ -36,6 +44,8 @@ class DimindTheme {
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
+        commentsBottomFieldTheme,
+        commentsBottomSheetTheme,
       ],
     );
   }
@@ -56,7 +66,7 @@ class DimindTheme {
         disabled: DimindColorsPalette.gray10,
       ),
       backgroundPrimary: DimindColor(
-        DimindColorsPalette.white.value,
+        DimindColorsPalette.dark60.value,
         pressed: DimindColorsPalette.gray10,
       ),
       backgroundSecondary: DimindColor(
